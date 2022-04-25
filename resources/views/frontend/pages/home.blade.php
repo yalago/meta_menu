@@ -29,12 +29,12 @@
                                     <source src="assets/images/video.mp4" type="video/mp4" />
                                 </video>
                             </div>
-                            <div class="text-light px-3">
+                            <div class="text-light px-3 center-content-vertically">
                                 <a href="/product_details" class="text-light">
                                     {{ $product['product_name'] }}
                                 </a>
                             </div>
-                            <div class="w-25 center-content-vertically actions">
+                            <div class="w-25 center-content-vertically actions ms-auto">
                                 <a class=" rounded-circle bg-primary-color mx-1  center-content add-to-cart-in-list">
                                     <img src="assets/images/basket.png" class="" alt="">
                                 </a>
