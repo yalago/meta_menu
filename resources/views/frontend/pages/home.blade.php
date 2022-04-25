@@ -25,9 +25,11 @@
                             <div class="w-25 center-content-vertically   image-video-wrap">
                                 <a href="/product_details">
                                     <img src="{{ $product['image'] }}" alt=""> </a>
-                                <video playsinline controls="false" muted="muted" class="display-none meal-video">
-                                    <source src="assets/images/video.mp4" type="video/mp4" />
-                                </video>
+                                @if ($product['video'] != null)
+                                    <video playsinline controls="false" muted="muted" class="display-none meal-video">
+                                        <source src="{{ $product['video'] }}" />
+                                    </video>
+                                @endif
                             </div>
                             <div class="text-light px-3">
                                 <a href="/product_details" class="text-light">
@@ -36,11 +38,13 @@
                             </div>
                             <div class="w-25 center-content-vertically actions">
                                 <a class=" rounded-circle bg-primary-color mx-1  center-content add-to-cart-in-list">
-                                    <img src="assets/images/basket.png" class="" alt="">
+                                    <img src="{{ asset('assets/images/basket.png') }}" class="" alt="">
                                 </a>
-                                <a class=" rounded-circle bg-gray mx-1 center-content" onclick="togglePlayVideo(this)">
-                                    <img src="assets/images/rictangle.png" alt="">
-                                </a>
+                                @if ($product['video'] != null)
+                                    <a class=" rounded-circle bg-gray mx-1 center-content" onclick="togglePlayVideo(this)">
+                                        <img src="{{ asset('assets/images/rictangle.png') }}" alt="">
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     @endforeach
