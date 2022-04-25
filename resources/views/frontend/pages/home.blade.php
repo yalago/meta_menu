@@ -23,7 +23,8 @@
                     @foreach ($products['data']['products_menu'] as $product)
                         <div class="d-flex py-2 product-in-list">
                             <div class="w-25 center-content-vertically   image-video-wrap">
-                                <a href="/product_details">
+                                <a
+                                    href="{{ route('showproductBranch', ['vendor_uuid' => $vendor_uuid, $product['product_id'], 'table_id' => $table_id]) }}">
                                     <img src="{{ $product['image'] }}" alt=""> </a>
                                 @if ($product['video'] != null)
                                     <video playsinline controls="false" muted="muted" class="display-none meal-video">
@@ -32,7 +33,8 @@
                                 @endif
                             </div>
                             <div class="text-light px-3 center-content-vertically">
-                                <a href="/product_details" class="text-light">
+                                <a href="{{ route('showproductBranch', ['vendor_uuid' => $vendor_uuid, $product['product_id'], 'table_id' => $table_id]) }}"
+                                    class="text-light">
                                     {{ $product['product_name'] }}
                                 </a>
                             </div>
@@ -102,7 +104,6 @@
         </div>
     </div>
     </div>
-   
 @endsection
 @section('scripts')
     <script src="{{ asset('assets/lib/OwlCarousel2/dist/owl.carousel.min.js') }}"></script>
