@@ -1,6 +1,6 @@
 @extends('frontend.layouts.main')
 @section('background')
-    style="background-image: url('{{ asset('assets/images/bg1.png') }})
+    style="background-image: url({{ asset('assets/images/bg1.png') }})"
 @endsection
 
 
