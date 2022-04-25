@@ -8,10 +8,7 @@
     <link href="assets/css/styles.rtl.css" rel="stylesheet">
     @yield('styles')
 
-    <script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/lib/jquery/jquery-3.6.0.min.js"></script>
-    @yield('scripts')
-    <script src="assets/js/scripts.js"></script>
+
 </head>
 
 <body>
@@ -21,6 +18,9 @@
         @yield('footer')
     </div>
 </body>
-
+<script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/lib/jquery/jquery-3.6.0.min.js"></script>
+@yield('scripts')
+<script src="assets/js/scripts.js"></script>
 
 </html>

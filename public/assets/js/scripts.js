@@ -37,5 +37,32 @@ $(document).ready(function () {
         $('#' + activeCategoryId).addClass('active-cat');
     });
 
+    $('#menu-trigger').on('click', function () {
+        $('#main-menu').slideToggle();
+    });
+
+
 
 });
+
+
+function togglePlayVideo(event) {
+    var element = event.currentTarget;
+    if (event.classList.contains("playing")) {
+        event.classList.remove("playing");
+        this.stopVideo(event.parentElement.parentElement);
+    } else {
+        event.classList.add("playing");
+        this.playVideo(event.parentElement.parentElement);
+    }
+}
+function stopVideo(e) {
+    e.querySelector("img").style.display = "block";
+    e.querySelector("video").style.display = "none";
+    e.querySelector("video").pause();
+}
+function playVideo(e) {
+    e.querySelector("img").style.display = "none";
+    e.querySelector("video").style.display = "block";
+    e.querySelector("video").play();
+}

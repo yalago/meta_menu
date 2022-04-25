@@ -57,8 +57,8 @@ style="background-image: url('assets/images/bg1.png')"
             @for ($i = 0; $i < 10; $i++) <div class="d-flex py-2 product-in-list">
                 <div class="w-25 center-content-vertically   image-video-wrap">
                     <img src="assets/images/burger.png" alt="">
-                    <video playsinline controls="false" muted="muted" class="display-none meal-video" >
-                        <source src="assets/images/video.mp4" type="video/mp4" />
+                    <video playsinline controls="false" muted="muted" class="display-none meal-video">
+                        <source :src="assets/images/video.mp4" type="video/mp4" />
                     </video>
                 </div>
                 <div class="text-light px-3">
@@ -69,7 +69,7 @@ style="background-image: url('assets/images/bg1.png')"
                         <img src="assets/images/basket.png" class="" alt="">
                     </a>
                     <a class=" rounded-circle bg-gray mx-1 center-content" onclick="togglePlayVideo(this)">
-                        <img src="assets/images/rictangle.png" alt="" >
+                        <img src="assets/images/rictangle.png" alt="">
                     </a>
                 </div>
         </div>

@@ -49,6 +49,11 @@
     border-radius: 12px;
 }
 
+.display-none {
+    display: none;
+}
+
+/* End general styles */
 #main-wrap {
     background-size: 100% 100%;
     min-height: 100vh;
@@ -121,4 +126,9 @@
     height: auto;
     opacity: 1;
     transition: height 500ms 500ms, opacity 1000ms 0ms;
+}
+
+
+.product-in-list video{
+    max-width: 100%;
 }
