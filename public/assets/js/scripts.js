@@ -65,7 +65,15 @@ $(document).ready(function () {
         $('#main-menu').slideToggle();
     });
 
+    $('.add-to-cart-in-list').on('click', function () {
+        $('#home-container').hide();
+        $('.add-to-cart-pressed').slideToggle();
+    });
 
+    $('.add-to-cart-pressed .close-button').on('click', function () {
+        $('#home-container').slideToggle();
+        $('.add-to-cart-pressed').hide();
+    });
 
 });
 
@@ -90,3 +98,4 @@ function playVideo(e) {
     e.querySelector("video").style.display = "block";
     e.querySelector("video").play();
 }
+
