@@ -23,9 +23,9 @@
     </div>
     <div class="ms-auto w-50">
         <button
-            class="btn bg-primary-color w-75 text-primary p-0 d-flex align-items-center ps-2 ms-auto custom-rounded-border">
+            class="btn bg-primary-color text-primary p-0 d-flex align-items-center ps-2 ms-auto custom-rounded-border">
             رقم الطاوله
-            <div class="btn bg-light text-secondary p-2 px-3 ms-auto h-100 inner-button custom-rounded-border">
+            <div class="btn bg-light text-secondary ms-1 p-2 px-3 h-100 inner-button custom-rounded-border">
                 32
             </div>
         </button>
