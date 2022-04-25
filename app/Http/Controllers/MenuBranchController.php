@@ -1,0 +1,115 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use GuzzleHttp\Client;
+
+class MenuBranchController extends vendorAuthController
+{
+    public function __construct()
+    {
+        parent::__construct();
+    }
+    public function branch($vendor_uuid, $table_id)
+    {
+        // add a new session handler
+        $client  = new Client();
+        $response  = $client->request('post', $this->ApiUrl . "table-session", [
+            'verify' => false,
+            'headers' => [
+                'Language' => \LaravelLocalization::getCurrentLocale()
+            ],
+            'form_params' => [
+                "table_id" => request()->table_id,
+            ]
+        ]);
+
+        // $url = $this->ApiUrl . "table?table_id=" . $table_id;
+        // $client  = new Client();
+        // $response  = $client->request('get', $url, [
+        //     'verify' => false,
+        //     'headers' => [
+        //         'Language' => \LaravelLocalization::getCurrentLocale()
+        //     ]
+        //
+        // ]);
+        // $category = ($response->getBody());
+        // $category = json_decode($category, true);
+        $category    = $this->categoriesBranch;
+        $vendor_info = $this->vendor_info;
+        $social      = $this->social;
+        $pixel = $this->pixel;
+        //category_id}/{table_id
+        return redirect(route('productCategoryBranch', ['vendor_uuid' => $this->vendor_uuid, 'category_id' => $category[0]['category_id'], 'table_id' => request()->table_id,]));
+
+        return view('branch', compact(['category', 'vendor_info', 'social', 'vendor_uuid', 'pixel']));
+    }
+    public function category($vendor_uuid, $table_id)
+    {
+
+        $url = $this->ApiUrl . "table?table_id=" . $table_id;
+        $client  = new Client();
+        $response  = $client->request('get', $url, [
+            'verify' => false,
+            'headers' => [
+                'Language' => \LaravelLocalization::getCurrentLocale(),
+
+            ]
+
+        ]);
+        $category = ($response->getBody());
+        $category = json_decode($category, true);
+        $cat = $category['data']['menu_categories'];
+        $vendor_info = $this->vendor_info;
+        $social = $this->social;
+        return response()->json([$cat]);
+    }
+
+    public function productCategoryBranch($vendor_uuid, $category_id, $table_id)
+    {
+        $page_id = request('page_id') ?? 1;
+        $vendor_uuid = $this->vendor_uuid;
+        $url = $this->ApiUrl . "menu/Branch?table_id=" . $table_id . "&category_id=" . $category_id . '&page=' . $page_id;
+        $client  = new Client();
+        $response  = $client->request('get', $url, [
+            'verify' => false,
+            'headers' => [
+                'Language' => session()->get('lang')
+            ]
+        ]);
+
+        $vendor_info = $this->vendor_info;
+        $product = ($response->getBody());
+        $product = json_decode($product, true);
+        // $popup = $product['data']['pop_up'];
+        if (request()->ajax()) {
+            $sortType = request('sortType') ? request('sortType') :  'grid';
+            $returnHTML = view('ajax.productBranch')->with(['sortType' => $sortType, 'product' => $product, 'vendor_uuid' => $vendor_uuid, 'vendor_info' => $vendor_info])->render();
+            return response()->json(array('success' => true, 'html' => $returnHTML, 'popup' => $popup));
+        }
+        $social = $this->social;
+        $pixel = $this->pixel;
+        $categories = $this->categoriesBranch;
+        return view('frontend.pages.home', compact(['product', 'vendor_uuid', 'categories', 'category_id', 'social', 'vendor_info', 'pixel', 'table_id']));
+    }
+    public function product()
+    {
+        $vendor_uuid = request()->vendor_uuid;
+        $product_id = request()->product_id;
+        $url = $this->ApiUrl . "product-info?product_id=$product_id";
+        $client  = new Client();
+        $response  = $client->request('get', $url, [
+            'verify' => false,
+            'headers' => [
+                'Language' => \LaravelLocalization::getCurrentLocale()
+            ]
+        ]);
+        $pixel = $this->pixel;
+        $social = $this->social;
+        $product = ($response->getBody());
+        $product = json_decode($product, true);
+        $vendor_info = $this->vendor_info;
+        return view('oneProductBranch', compact(['product', 'vendor_uuid', 'vendor_info', 'social', 'pixel']));
+    }
+}

@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-    <link href="assets/lib/bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet">
-    <link href="assets/css/styles.rtl.css" rel="stylesheet">
+    <link href="{{ asset('assets/lib/bootstrap/css/bootstrap.rtl.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/styles.rtl.css') }}" rel="stylesheet">
     @yield('styles')
 
 
@@ -20,9 +20,9 @@
         @yield('footer')
     </div>
 </body>
-<script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/lib/jquery/jquery-3.6.0.min.js"></script>
+<script src="{{ asset('assets/lib/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/lib/jquery/jquery-3.6.0.min.js') }}"></script>
 @yield('scripts')
-<script src="assets/js/scripts.js"></script>
+<script src="{{ asset('assets/js/scripts.js') }}"></script>
 
 </html>
