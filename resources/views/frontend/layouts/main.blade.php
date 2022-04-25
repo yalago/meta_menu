@@ -13,8 +13,10 @@
 
 <body>
     <div id="main-wrap" @yield('background')>
-        @yield('header')
-        @yield('content')
+        @include('frontend.layouts.sections.header')
+        <div id="content-wrap" class="position-absolute mh-50 w-100 text-light p-3">
+            @yield('content')
+        </div>
         @yield('footer')
     </div>
 </body>

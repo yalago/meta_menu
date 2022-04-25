@@ -14,4 +14,6 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/', [ HomeController::class, 'home'])->name('home');
+Route::get('/pressOnCart', [ HomeController::class, 'pressOnCart'])->name('pressOnCart');
+Route::get('/product_details', [HomeController::class, 'product_details'])->name('product_details');

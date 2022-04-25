@@ -14,9 +14,15 @@ class HomeController extends BaseController
 
     public function home()
     {
-
-
-
         return view('frontend.pages.home');
+    }
+
+    public function pressOnCart()
+    {
+        return view('frontend.pages.press_on_cart');
+    }
+    public function product_details()
+    {
+        return view('frontend.pages.product_details');
     }
 }

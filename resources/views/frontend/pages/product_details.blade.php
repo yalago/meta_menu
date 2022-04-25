@@ -1,6 +1,6 @@
 @extends('frontend.layouts.main')
 @section('background')
-style="background-image: url('assets/images/bg1.png')"
+style="background-image: url('assets/images/bg2.png')"
 @endsection
 @section('header')
 <div id="header" class="px-2">
@@ -39,63 +39,60 @@ style="background-image: url('assets/images/bg1.png')"
 @endsection
 
 @section('content')
-<div id="content-wrap" class="position-absolute mh-50">
-    <div id="home-products-list" class="mt-3 px-2">
-        <div id="products-categories-slider" class="owl-carousel mb-3 owl-theme">
-            <div class="item center-content-vertically border border-1 p-3 custom-rounded-border text-light active-cat-pill"
-                data-target="cat-0">
-                <img src="assets/images/meal-slice.png" class="me-2" alt="">
-                بيتزا
-            </div>
-            <div class="item center-content-vertically border border-1 p-3 custom-rounded-border text-light"
-                data-target="cat-1">
-                <img src="assets/images/meal-burger.png" class="me-2" alt="">
-                برجر
+<div id="" class="">
+    <div class="row">
+        <div class="col-6">
+            <div>
+                <h5>منتج جديد</h5>
             </div>
         </div>
-        <div id="cat-0" class="product-list-category active-cat">
-            @for ($i = 0; $i < 10; $i++) <div class="d-flex py-2 product-in-list">
-                <div class="w-25 center-content-vertically   image-video-wrap">
-                    <img src="assets/images/burger.png" alt="">
-                    <video playsinline controls="false" muted="muted" class="display-none meal-video">
-                        <source :src="assets/images/video.mp4" type="video/mp4" />
-                    </video>
-                </div>
-                <div class="text-light px-3">
-                    خبز التارتين المحشو بلحم الحبش المدخن والجبن السويسري مع صوص الباشاميلية
-                </div>
-                <div class="w-25 center-content-vertically actions">
-                    <a class=" rounded-circle bg-primary-color mx-1  center-content">
-                        <img src="assets/images/basket.png" class="" alt="">
-                    </a>
-                    <a class=" rounded-circle bg-gray mx-1 center-content" onclick="togglePlayVideo(this)">
-                        <img src="assets/images/rictangle.png" alt="">
-                    </a>
-                </div>
+        <div class="col-6 text-end d-flex flex-row justify-content-end">
+            <a href="" class="bg-teritary button-size-small center-content rounded me-2">
+                <img src="assets/images/basket.png" alt="">
+            </a>
+            <a href="" class="bg-primary-color button-size-small center-content rounded">
+                <img src="assets/images/rounded-plus.png" alt="">
+            </a>
         </div>
-        @endfor
-    </div>
+        <p class="mt-1">
+            خبز التارتين المحشو بلحم الحبش المدخن والجبن السويسري مع صوص الباشاميل والطماطم المجففه يقدم مع الخس وصلصه
+            البلسمك
+            السعرات الحرارية
+        </p>
+        <div class="owl-carousel" id="product-carousel">
+           <div class="item">
+                <img src="assets/images/single-product-thumbnail.png" alt="" class="custom-rounded-border border">
+                <p class="small-font">
+                    خبز التارتين المحشو بلحم الحبش المدخن والجبن السويسري
+                </p>
+            </div>
+            <div class="item">
+                <img src="assets/images/single-product-thumbnail.png" alt="" class="custom-rounded-border border">
+                <p class="small-font">
+                    خبز التارتين المحشو بلحم الحبش المدخن والجبن السويسري
+                </p>
+            </div>
+            <div class="item">
+                <img src="assets/images/single-product-thumbnail.png" alt="" class="custom-rounded-border border">
+                <p class="small-font">
+                    خبز التارتين المحشو بلحم الحبش المدخن والجبن السويسري
+                </p>
+            </div>
+            <div class="item">
+                <img src="assets/images/single-product-thumbnail.png" alt="" class="custom-rounded-border border">
+                <p class="small-font">
+                    خبز التارتين المحشو بلحم الحبش المدخن والجبن السويسري
+                </p>
+            </div>
+            <div class="item">
+                <img src="assets/images/single-product-thumbnail.png" alt="" class="custom-rounded-border border">
+                <p class="small-font">
+                    خبز التارتين المحشو بلحم الحبش المدخن والجبن السويسري
+                </p>
+            </div>
+        </div>
 
-    <div id="cat-1" class="product-list-category">
-        @for ($i = 0; $i < 10; $i++) <div class="d-flex py-2 product-in-list">
-            <div class="w-25 center-content-vertically ">
-                <img src="assets/images/burger.png" alt="">
-            </div>
-            <div class="text-light px-3">
-                خبزا التارتين المحشو بلحم الحبش المدخن والجبن السويسري مع صوص الباشاميلية
-            </div>
-            <div class="w-25 center-content-vertically actions">
-                <a class=" rounded-circle bg-primary-color mx-1  center-content">
-                    <img src="assets/images/basket.png" class="" alt="">
-                </a>
-                <a class="rounded-circle bg-gray mx-1 center-content">
-                    <img src="assets/images/rictangle.png" alt="">
-                </a>
-            </div>
     </div>
-    @endfor
-</div>
-</div>
 </div>
 @endsection
 @section('scripts')

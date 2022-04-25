@@ -23,6 +23,30 @@ $(document).ready(function () {
         },
     })
 
+
+    $('#product-carousel').owlCarousel({
+        // loop: true,
+        margin: 10,
+        responsiveClass: true,
+        navigation: false,
+        rtl: true,
+        responsive: {
+            0: {
+                items: 3,
+                nav: true
+            },
+            600: {
+                items: 3,
+                nav: false
+            },
+            1000: {
+                items: 5,
+                nav: true,
+                loop: false
+            }
+        },
+    })
+
     $('.item').on('click', function () {
         $('.item').each(function (e) {
             $(this).removeClass('active-cat-pill');
