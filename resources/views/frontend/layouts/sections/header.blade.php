@@ -2,24 +2,12 @@
     <div class="w-50 text-primary center-content-vertically">
         <div class="me-2 ">
             <div class="position-relative">
-                <a id="menu-trigger">
-                    <img src="{{ asset('assets/images/rounded-button.png') }}" alt="">
-                </a>
-                <div id="main-menu" class="position-absolute display-none">
-                    <a class="d-block w-100">
-                        <img src="{{ asset('assets/images/rounded-button.png') }}" alt="">
-                    </a>
-                    <a class="d-block w-100">
-                        <img src="{{ asset('assets/images/rounded-button.png') }}" alt="">
-                    </a>
-                </div>
-
+                <a id="menu-trigger" onclick="history.back()">
+                    <img src="{{ asset('assets/images/right-arrow.png') }}" alt="">
+                </a>              
             </div>
         </div>
-        <div>
-            المنيو
-        </div>
-
+       
     </div>
     <div class="ms-auto w-50">
         <button

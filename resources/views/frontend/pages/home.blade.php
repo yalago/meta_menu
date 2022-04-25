@@ -1,4 +1,4 @@
-@extends('frontend.layouts.main')
+@extends('frontend.layouts.home')
 @section('background')
     style="background-image: url({{ asset('assets/images/bg1.png') }})"
 @endsection
