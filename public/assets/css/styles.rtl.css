@@ -24,9 +24,11 @@
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
-img{
+
+img {
     max-width: 100%;
 }
+
 a {
     text-decoration: none;
 }
@@ -128,6 +130,8 @@ a {
 
 .home-carousel-container {
     right: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 #home-products-list .actions a {
