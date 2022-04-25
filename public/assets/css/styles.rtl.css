@@ -1,0 +1,124 @@
+:root {
+    --bs-blue: #0d6efd;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #d63384;
+    --bs-red: #dc3545;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #ffc107;
+    --bs-green: #198754;
+    --bs-teal: #20c997;
+    --bs-cyan: #0dcaf0;
+    --bs-white: #fff;
+    --bs-gray: #6c757d;
+    --bs-gray-dark: #343a40;
+    --bs-primary: #8D4CFE;
+    --bs-secondary: #1C1C1C;
+    --bs-success: #198754;
+    --bs-info: #0dcaf0;
+    --bs-warning: #ffc107;
+    --bs-danger: #dc3545;
+    --bs-light: #f8f9fa;
+    --bs-dark: #212529;
+    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+}
+
+.bg-primary-color {
+    background-color: var(--bs-primary);
+}
+
+.bg-gray {
+    background-color: #979797;
+}
+
+.rounded-button {
+    border-radius: 50%;
+}
+
+.text-primary {
+    color: white !important;
+}
+
+.text-secondary {
+    color: #1C1C1C !important;
+}
+
+.custom-rounded-border {
+    border-radius: 12px;
+}
+
+#main-wrap {
+    background-size: 100% 100%;
+    min-height: 100vh;
+}
+
+#header {
+    display: flex;
+    position: absolute;
+    top: 5%;
+    width: 100%;
+}
+
+#content-wrap {
+    bottom: 0;
+    background-color: #1C1C1C;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    max-height: 50%;
+    overflow: scroll;
+}
+
+#home-products-list {
+    direction: rtl;
+}
+
+#home-products-list .product-in-list {
+    border-bottom: 1px solid #595959;
+}
+
+#home-products-list .actions a {
+    width: 30px;
+    height: 30px;
+}
+
+.center-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center-content-vertically {
+    display: flex;
+    align-items: center;
+}
+
+.owl-prev {
+    display: none;
+}
+
+.disabled {
+    display: none !important;
+}
+
+.owl-carousel .owl-item img {
+    width: auto !important;
+}
+
+.active-cat-pill {
+    background-color: #FE724C;
+}
+
+.product-list-category:not(.active-cat) {
+    transition: height 0ms 400ms, opacity 400ms 0ms;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.product-list-category.active-cat {
+    height: auto;
+    opacity: 1;
+    transition: height 500ms 500ms, opacity 1000ms 0ms;
+}
