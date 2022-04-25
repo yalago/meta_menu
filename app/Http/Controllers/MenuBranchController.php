@@ -81,7 +81,7 @@ class MenuBranchController extends vendorAuthController
 
         $vendor_info = $this->vendor_info;
         $product = ($response->getBody());
-        $product = json_decode($product, true);
+        $products = json_decode($product, true);
         // $popup = $product['data']['pop_up'];
         if (request()->ajax()) {
             $sortType = request('sortType') ? request('sortType') :  'grid';
@@ -91,7 +91,7 @@ class MenuBranchController extends vendorAuthController
         $social = $this->social;
         $pixel = $this->pixel;
         $categories = $this->categoriesBranch;
-        return view('frontend.pages.home', compact(['product', 'vendor_uuid', 'categories', 'category_id', 'social', 'vendor_info', 'pixel', 'table_id']));
+        return view('frontend.pages.home', compact(['products', 'vendor_uuid', 'categories', 'category_id', 'social', 'vendor_info', 'pixel', 'table_id']));
     }
     public function product()
     {

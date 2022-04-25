@@ -6,31 +6,32 @@
 
 @section('content')
     <div id="home-container">
-        <div id="home-products-list" class="mt-3 ">
-            <div id="products-categories-slider" class="owl-carousel mb-3 owl-theme">
-                @foreach ($categories as $item)
-                    <div class="item center-content-vertically border border-1 p-3 custom-rounded-border text-light active-cat-pill"
-                        data-target="cat-{{ $item['category_id'] }}">
-                        <img src="assets/images/meal-slice.png" class="me-2" alt="">
-                        {{ $item['category_name'] }}
-                    </div>
-                @endforeach
+        <div id="home-products-list" class="">
+            <div class="home-carousel-container position-fixed rounded w-100 p-2 bg-black">
+                <div id="products-categories-slider" class="owl-carousel owl-theme ">
+                    @foreach ($categories as $item)
+                        <div class="item center-content-vertically border border-1 p-3 custom-rounded-border text-light active-cat-pill"
+                            data-target="cat-{{ $item['category_id'] }}">
+                            <img src="assets/images/meal-slice.png" class="me-2" alt="">
+                            {{ $item['category_name'] }}
+                        </div>
+                    @endforeach
+                </div>
             </div>
             @foreach ($categories as $item)
                 <div id="cat-{{ $item['category_id'] }}" class="product-list-category active-cat">
-
-                    @foreach ($product['data']['products_menu'] as $items)
+                    @foreach ($products['data']['products_menu'] as $product)
                         <div class="d-flex py-2 product-in-list">
                             <div class="w-25 center-content-vertically   image-video-wrap">
                                 <a href="/product_details">
-                                    <img src="{{ $items['image'] }}" alt=""> </a>
+                                    <img src="{{ $product['image'] }}" alt=""> </a>
                                 <video playsinline controls="false" muted="muted" class="display-none meal-video">
                                     <source src="assets/images/video.mp4" type="video/mp4" />
                                 </video>
                             </div>
                             <div class="text-light px-3">
                                 <a href="/product_details" class="text-light">
-                                    {{ $items['product_name'] }}
+                                    {{ $product['product_name'] }}
                                 </a>
                             </div>
                             <div class="w-25 center-content-vertically actions">
@@ -45,6 +46,7 @@
                     @endforeach
                 </div>
             @endforeach
+
 
         </div>
     </div>
