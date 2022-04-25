@@ -91,7 +91,8 @@ class MenuBranchController extends vendorAuthController
         $social = $this->social;
         $pixel = $this->pixel;
         $categories = $this->categoriesBranch;
-        return view('frontend.pages.home', compact(['products', 'vendor_uuid', 'categories', 'category_id', 'social', 'vendor_info', 'pixel', 'table_id']));
+        $table_number = $this->table_number['tableNumber'];
+        return view('frontend.pages.home', compact(['products', 'vendor_uuid', 'categories', 'table_number', 'category_id', 'social', 'vendor_info', 'pixel', 'table_id']));
     }
     public function product()
     {
@@ -102,14 +103,16 @@ class MenuBranchController extends vendorAuthController
         $response  = $client->request('get', $url, [
             'verify' => false,
             'headers' => [
-                'Language' => \LaravelLocalization::getCurrentLocale()
+                'Language' => session()->get('lang')
             ]
         ]);
         $pixel = $this->pixel;
         $social = $this->social;
         $product = ($response->getBody());
-        $product = json_decode($product, true);
+          $product = json_decode($product, true);
         $vendor_info = $this->vendor_info;
-        return view('oneProductBranch', compact(['product', 'vendor_uuid', 'vendor_info', 'social', 'pixel']));
+        $table_number = $this->table_number['tableNumber'];
+
+        return view('frontend.pages.product_details', compact(['table_number', 'product', 'vendor_uuid', 'vendor_info', 'social', 'pixel']));
     }
 }

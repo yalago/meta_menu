@@ -88,6 +88,7 @@ class vendorAuthController extends Controller
             $vendorInfoB = json_decode($vendorInfoB, true);
 
             $this->categoriesBranch = $vendorInfoB['data']['menu_categories'];
+            $this->table_number = $vendorInfoB['data'];
 
             $responseTracking  = (new Client())->request(
                 'get',
