@@ -54,10 +54,9 @@
 
         </div>
     </div>
-    </div>
     <div class="position-relative add-to-cart-pressed display-none">
         <span class="close-button">
-            <img src="assets/images/close.png" alt="">
+            <img src="{{ asset('assets/images/close.png') }}" alt="">
         </span>
         <div class="d-flex mt-3 pt-5">
             <div class="w-75">
@@ -102,6 +101,8 @@
             </div>
         </div>
     </div>
+    </div>
+   
 @endsection
 @section('scripts')
     <script src="{{ asset('assets/lib/OwlCarousel2/dist/owl.carousel.min.js') }}"></script>
