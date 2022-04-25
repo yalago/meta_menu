@@ -3,14 +3,14 @@
         <div class="me-2 ">
             <div class="position-relative">
                 <a id="menu-trigger">
-                    <img src="assets/images/rounded-button.png" alt="">
+                    <img src="{{ asset('assets/images/rounded-button.png') }}" alt="">
                 </a>
                 <div id="main-menu" class="position-absolute display-none">
                     <a class="d-block w-100">
-                        <img src="assets/images/rounded-button.png" alt="">
+                        <img src="{{ asset('assets/images/rounded-button.png') }}" alt="">
                     </a>
                     <a class="d-block w-100">
-                        <img src="assets/images/rounded-button.png" alt="">
+                        <img src="{{ asset('assets/images/rounded-button.png') }}" alt="">
                     </a>
                 </div>
 

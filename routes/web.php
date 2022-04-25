@@ -14,6 +14,9 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [ HomeController::class, 'home'])->name('home');
-Route::get('/pressOnCart', [ HomeController::class, 'pressOnCart'])->name('pressOnCart');
+// Route::get('/', [ HomeController::class, 'home'])->name('home');
+Route::get('/pressOnCart', [HomeController::class, 'pressOnCart'])->name('pressOnCart');
 Route::get('/product_details', [HomeController::class, 'product_details'])->name('product_details');
+Route::group(['prefix' => '{vendor_uuid}', 'middleware' => ['apiCheckVendor']], function () {
+    Route::get('menu/{category_id}/{table_id}', [App\Http\Controllers\MenuBranchController::class, 'productCategoryBranch'])->name('productCategoryBranch');
+});

@@ -29,7 +29,7 @@ class vendorAuthController extends Controller
     {
         // handler vendor Info
         $this->vendor_uuid = request('vendor_uuid');
-        $this->ApiUrl = 'https://dashboard.metaemenu.com//api/vendor/' . $this->vendor_uuid . '/';
+        $this->ApiUrl = 'https://dashboard.metaemenu.com/api/vendor/' . $this->vendor_uuid . '/';
 
 
         $client  = new Client();
@@ -110,15 +110,15 @@ class vendorAuthController extends Controller
 
         View::share('activityStatus', $this->activityStatus);
         // ==================================pixel code ===============================
-        $client  = new Client();
-        $response  = $client->request('get', $this->ApiUrl . 'pixel-codes', [
-            'verify' => false,
-            'headers' => [
-                'Language' => session()->get('lang')
-            ]
-        ]);
-        $pixel = ($response->getBody());
-        $pixel = json_decode($pixel, true);
-        $this->pixel = $pixel['data'];
+        // $client  = new Client();
+        // $response  = $client->request('get', $this->ApiUrl . 'pixel-codes', [
+        //     'verify' => false,
+        //     'headers' => [
+        //         'Language' => session()->get('lang')
+        //     ]
+        // ]);
+        // $pixel = ($response->getBody());
+        // $pixel = json_decode($pixel, true);
+        // $this->pixel = $pixel['data'];
     }
 }
