@@ -24,9 +24,11 @@
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
-a{
+
+a {
     text-decoration: none;
 }
+
 .bg-primary-color {
     background-color: var(--bs-primary);
 }
@@ -35,8 +37,9 @@ a{
     background-color: #979797;
 }
 
-.bg-dark {
+.bg-black {
     background-color: #1C1C1C;
+
 }
 
 .bg-dark-gray {
@@ -88,7 +91,7 @@ a{
 
 /* End general styles */
 #main-wrap {
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
 }
@@ -109,12 +112,20 @@ a{
     overflow: scroll;
 }
 
+#content-wrap .spacer {
+    padding-top: 15px;
+}
+
 #home-products-list {
     direction: rtl;
 }
 
 #home-products-list .product-in-list {
     border-bottom: 1px solid #595959;
+}
+
+.home-carousel-container {
+    right: 0;
 }
 
 #home-products-list .actions a {
@@ -147,6 +158,10 @@ a{
 
 .active-cat-pill {
     background-color: #FE724C;
+}
+
+.product-list-category {
+    padding-top: 65px;
 }
 
 .product-list-category:not(.active-cat) {

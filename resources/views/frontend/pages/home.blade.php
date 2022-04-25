@@ -6,17 +6,19 @@ style="background-image: url('assets/images/bg1.png')"
 
 @section('content')
 <div id="home-container">
-    <div id="home-products-list" class="mt-3 ">
-        <div id="products-categories-slider" class="owl-carousel mb-3 owl-theme">
-            <div class="item center-content-vertically border border-1 p-3 custom-rounded-border text-light active-cat-pill"
-                data-target="cat-0">
-                <img src="assets/images/meal-slice.png" class="me-2" alt="">
-                بيتزا
-            </div>
-            <div class="item center-content-vertically border border-1 p-3 custom-rounded-border text-light"
-                data-target="cat-1">
-                <img src="assets/images/meal-burger.png" class="me-2" alt="">
-                برجر
+    <div id="home-products-list" class="">
+        <div class="home-carousel-container position-fixed rounded w-100 p-2 bg-black">
+            <div id="products-categories-slider" class="owl-carousel owl-theme ">
+                <div class="item center-content-vertically border border-1 p-3 custom-rounded-border text-light active-cat-pill"
+                    data-target="cat-0">
+                    <img src="assets/images/meal-slice.png" class="me-2" alt="">
+                    بيتزا
+                </div>
+                <div class="item center-content-vertically border border-1 p-3 custom-rounded-border text-light"
+                    data-target="cat-1">
+                    <img src="assets/images/meal-burger.png" class="me-2" alt="">
+                    برجر
+                </div>
             </div>
         </div>
         <div id="cat-0" class="product-list-category active-cat">
