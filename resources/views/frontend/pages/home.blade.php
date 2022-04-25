@@ -36,7 +36,7 @@
                                     {{ $product['product_name'] }}
                                 </a>
                             </div>
-                            <div class="w-25 center-content-vertically actions ms-auto">
+                            <div class=" center-content-vertically actions ms-auto">
                                 <a class=" rounded-circle bg-primary-color mx-1  center-content add-to-cart-in-list">
                                     <img src="{{ asset('assets/images/basket.png') }}" class="" alt="">
                                 </a>
