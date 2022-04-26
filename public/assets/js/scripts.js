@@ -74,6 +74,16 @@ $(document).ready(function () {
         $('#home-container').slideToggle();
         $('.add-to-cart-pressed').hide();
     });
+    if ($('.status-container.active').length > 0) {
+        let reachedToActive = false;
+        $('.status-container').each(function () {
+            if ($(this).hasClass('active') || reachedToActive) {
+                reachedToActive = true;
+                return;
+            }
+            $(this).addClass('active');
+        });
+    }
 
 });
 
@@ -104,3 +114,4 @@ function redirectBack() {
         history.back()
     window.location.href = window.homeURL;
 }
+

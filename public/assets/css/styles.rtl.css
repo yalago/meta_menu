@@ -24,7 +24,9 @@
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
-
+body{
+    font-size: 14px;
+}
 img {
     max-width: 100%;
 }
@@ -240,3 +242,38 @@ h6 {
 }
 
 /* End checkout */
+
+/* Track order */
+.order-statuses img {
+    width: 30px;
+    height: 30px;
+}
+
+.status-container {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.status-container.active {
+    color: #FE724C;
+}
+
+.status-indicator {
+    height: 40px;
+    background-color: #595959;
+    width: 2px;
+    position: absolute;
+    top: 100%;
+    right: 23px;
+}
+
+.status-container.active .status-indicator {
+    background-color: #FE724C;
+}
+
+.status-container.active .status-image-container {
+    background-color: #FE724C;
+}
+
+/* End track order */
