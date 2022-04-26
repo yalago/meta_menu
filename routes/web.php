@@ -21,5 +21,6 @@ Route::group(['prefix' => '{vendor_uuid}', 'middleware' => ['apiCheckVendor']], 
     Route::get('menu/{category_id}/{table_id}', [App\Http\Controllers\MenuBranchController::class, 'productCategoryBranch'])->name('productCategoryBranch');
     Route::get('showproduct/{product_id}/{table_id}', [App\Http\Controllers\MenuBranchController::class, 'product'])->name('showproductBranch');
     Route::get('checkout', [App\Http\Controllers\MenuBranchController::class, 'checkout'])->name('checkout');
+    Route::get('track_order', [App\Http\Controllers\MenuBranchController::class, 'track_order'])->name('track_order');
     Route::get('congratulations', [App\Http\Controllers\MenuBranchController::class, 'congratulations'])->name('congratulations');
 });

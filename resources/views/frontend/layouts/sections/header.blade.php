@@ -1,5 +1,5 @@
 <div id="header" class="px-2">
-    <div class="w-50 text-primary center-content-vertically">
+    <div class="w-25 text-primary center-content-vertically">
         <div class="me-2 ">
             <div class="position-relative">
                 <a id="menu-trigger" onclick="redirectBack()">
@@ -8,6 +8,11 @@
             </div>
         </div>
 
+    </div>
+    <div class="w-50 text-primary center-content-vertically justify-content-center">
+       <h3 class="mb-3 text-center">
+           @yield('page-title')
+       </h3>
     </div>
     {{-- <div class="ms-auto w-50">
         <button

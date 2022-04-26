@@ -123,4 +123,9 @@ class MenuBranchController extends vendorAuthController
     {
         return view('frontend.pages.congratulations');
     }
+    public function track_order()
+    {
+        return view('frontend.pages.track_order');
+    }
+    
 }
