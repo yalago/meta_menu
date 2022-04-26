@@ -2,14 +2,14 @@
     <div class="w-50 text-primary center-content-vertically">
         <div class="me-2 ">
             <div class="position-relative">
-                <a id="menu-trigger" onclick="history.back()">
+                <a id="menu-trigger" onclick="redirectBack()">
                     <img src="{{ asset('assets/images/right-arrow.png') }}" alt="">
-                </a>              
+                </a>
             </div>
         </div>
-       
+
     </div>
-    <div class="ms-auto w-50">
+    {{-- <div class="ms-auto w-50">
         <button
             class="btn bg-primary-color text-primary p-0 d-flex align-items-center ps-2 ms-auto custom-rounded-border">
             رقم الطاوله
@@ -17,5 +17,8 @@
                 {{ $table_number }}
             </div>
         </button>
-    </div>
+    </div> --}}
 </div>
+<script>
+    window.window.homeURL='/gerizapaints/menu/556/1'
+</script>

@@ -31,3 +31,7 @@
         </button>
     </div>
 </div>
+
+<script>
+    window.window.homeURL='/gerizapaints/menu/556/1'
+</script>
