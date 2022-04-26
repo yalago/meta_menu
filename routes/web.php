@@ -20,4 +20,6 @@ Route::get('/product_details', [HomeController::class, 'product_details'])->name
 Route::group(['prefix' => '{vendor_uuid}', 'middleware' => ['apiCheckVendor']], function () {
     Route::get('menu/{category_id}/{table_id}', [App\Http\Controllers\MenuBranchController::class, 'productCategoryBranch'])->name('productCategoryBranch');
     Route::get('showproduct/{product_id}/{table_id}', [App\Http\Controllers\MenuBranchController::class, 'product'])->name('showproductBranch');
+    Route::get('checkout', [App\Http\Controllers\MenuBranchController::class, 'checkout'])->name('checkout');
+    Route::get('congratulations', [App\Http\Controllers\MenuBranchController::class, 'congratulations'])->name('congratulations');
 });

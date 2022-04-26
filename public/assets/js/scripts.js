@@ -99,3 +99,8 @@ function playVideo(e) {
     e.querySelector("video").play();
 }
 
+function redirectBack() {
+    if (history.length)
+        history.back()
+    window.location.href = window.homeURL;
+}

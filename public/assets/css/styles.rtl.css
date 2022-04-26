@@ -93,6 +93,20 @@ a {
     font-size: 12px;
 }
 
+.primary-border {
+    border: 1px solid #595959;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+
+}
+
 /* End general styles */
 #main-wrap {
     background-size: cover;
@@ -209,3 +223,20 @@ a {
 #product-carousel .owl-nav {
     display: none;
 }
+
+/* Checkout */
+#content-wrap-style2 {
+    min-height: 100vh;
+}
+
+#content-wrap-style2>div {
+    padding-top: 85px;
+}
+
+#confrim-order {
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+}
+
+/* End checkout */

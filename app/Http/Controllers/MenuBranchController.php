@@ -109,10 +109,18 @@ class MenuBranchController extends vendorAuthController
         $pixel = $this->pixel;
         $social = $this->social;
         $product = ($response->getBody());
-          $product = json_decode($product, true);
+        $product = json_decode($product, true);
         $vendor_info = $this->vendor_info;
         $table_number = $this->table_number['tableNumber'];
 
         return view('frontend.pages.product_details', compact(['table_number', 'product', 'vendor_uuid', 'vendor_info', 'social', 'pixel']));
+    }
+    public function checkout()
+    {
+        return view('frontend.pages.checkout');
+    }
+    public function congratulations()
+    {
+        return view('frontend.pages.congratulations');
     }
 }
