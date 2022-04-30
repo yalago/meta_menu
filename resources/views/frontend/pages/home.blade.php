@@ -56,6 +56,7 @@
 
         </div>
     </div>
+  
     <div class="position-relative add-to-cart-pressed display-none">
         <span class="close-button">
             <img src="{{ asset('assets/images/close.png') }}" alt="">
@@ -75,15 +76,61 @@
         <div class="">
             <h4 class="text-teritary">الاضافات</h4>
         </div>
-        <div class="row">
-            <div class="col-1">
-                <input type="checkbox" class="form-check-input checkbox dark" />
+        <div class="">
+    
+            <div class="addon-category">
+                <div>
+                    <h3>اضافات</h3>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <input type="checkbox" class="form-check-input checkbox dark" />
+                    </div>
+                    <div class="col-8">
+                        جبنة بالمكسرات
+                    </div>
+                    <div class="col-3 text-end">
+                        23 ريال
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <input type="checkbox" class="form-check-input checkbox dark" />
+                    </div>
+                    <div class="col-8">
+                        جبنة بالمكسرات
+                    </div>
+                    <div class="col-3 text-end">
+                        23 ريال
+                    </div>
+                </div>
             </div>
-            <div class="col-8">
-                جبنة بالمكسرات
-            </div>
-            <div class="col-3 text-end">
-                23 ريال
+            <div class="addon-category">
+                <div>
+                    <h3>اضافات</h3>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <input type="checkbox" class="form-check-input checkbox dark" />
+                    </div>
+                    <div class="col-8">
+                        جبنة بالمكسرات
+                    </div>
+                    <div class="col-3 text-end">
+                        23 ريال
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <input type="checkbox" class="form-check-input checkbox dark" />
+                    </div>
+                    <div class="col-8">
+                        جبنة بالمكسرات
+                    </div>
+                    <div class="col-3 text-end">
+                        23 ريال
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row mt-2 bg-dark-gray px-2 py-3">
