@@ -1,52 +1,4 @@
 $(document).ready(function () {
-
-    $('#products-categories-slider').owlCarousel({
-        // loop: true,
-        margin: 10,
-        responsiveClass: true,
-        navigation: false,
-        rtl: true,
-        responsive: {
-            0: {
-                items: 3,
-                nav: true
-            },
-            600: {
-                items: 3,
-                nav: false
-            },
-            1000: {
-                items: 5,
-                nav: true,
-                loop: false
-            }
-        },
-    })
-
-
-    $('#product-carousel').owlCarousel({
-        // loop: true,
-        margin: 10,
-        responsiveClass: true,
-        navigation: false,
-        rtl: true,
-        responsive: {
-            0: {
-                items: 3,
-                nav: true
-            },
-            600: {
-                items: 3,
-                nav: false
-            },
-            1000: {
-                items: 5,
-                nav: true,
-                loop: false
-            }
-        },
-    })
-
     $('.item').on('click', function () {
         $('.item').each(function (e) {
             $(this).removeClass('active-cat-pill');
@@ -54,7 +6,6 @@ $(document).ready(function () {
         $('.product-list-category').each(function () {
             $(this).removeClass('active-cat');
         });
-
 
         $(this).addClass('active-cat-pill');
         var activeCategoryId = $(this).attr('data-target');
@@ -94,6 +45,27 @@ $(document).ready(function () {
     });
 
 
+    var lastTouchYPosition = 0;
+    $('#content-wrap').on('touchmove', function (e) {
+        var changedTouches = e.originalEvent.changedTouches;
+        for (var i = 0; i < changedTouches.length; i++) {
+            var touch = changedTouches[i];
+            if (touch.pageY < lastTouchYPosition) {
+                $('#content-wrap').css('max-height', '90%')
+                // console.log(i);
+                // console.log(changedTouches.length-1);
+
+                if (i == changedTouches.length)
+                    $("#content-wrap").animate({ scrollTop: 0 });
+
+            } else {
+                if ($('#content-wrap').scrollTop() == 0)
+                    $('#content-wrap').css('max-height', '50%')
+            }
+            lastTouchYPosition = touch.pageY;
+        }
+
+    });
 });
 
 
