@@ -22,9 +22,15 @@ Route::group(['prefix' => '{vendor_uuid}', 'middleware' => ['apiCheckVendor']], 
     Route::get('showproduct/{product_id}/{table_id}', [App\Http\Controllers\MenuBranchController::class, 'product'])->name('showproductBranch');
 
     Route::post('changeQuantity', 'OrderBasketController@changeQuantity')->name('changeQuantity');
-
+    Route::post('add-to-basket/{product_id}', [App\Http\Controllers\OrderBasketController::class, 'addToBasket'])->name('addToBasket');
+    Route::post('submitOrder', 'OrderBasketController@submitOrder')->name('submitOrder');
+    Route::post('pay-visa', 'OrderBasketController@submitOrderOnline')->name('pay.visa');
+    Route::get('payment/status', 'OrderBasketController@paymentStatus')->name('showProductFullInfoMenu');
+    Route::post('remove-from-basket', 'OrderBasketController@removeFromBasket')->name('removeFromBasket');
+    Route::post('changeQuantity', 'OrderBasketController@changeQuantity')->name('changeQuantity');
+    Route::get('showProductFullInfo', 'OrderBasketController@showProductFullInfo')->name('showProductFullInfo');
+    Route::post('coupon-check', 'OrderBasketController@checkCoupon')->name('coupon.check');
     Route::get('checkout', [App\Http\Controllers\MenuBranchController::class, 'checkout'])->name('checkout');
     Route::get('track_order', [App\Http\Controllers\MenuBranchController::class, 'track_order'])->name('track_order');
     Route::get('congratulations', [App\Http\Controllers\MenuBranchController::class, 'congratulations'])->name('congratulations');
-
 });

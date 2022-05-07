@@ -8,7 +8,7 @@
     <link href="{{ asset('assets/css/styles.rtl.css') }}" rel="stylesheet">
     @yield('styles')
 
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -25,4 +25,5 @@
 @yield('scripts')
 <script src="{{ asset('assets/js/scripts.js') }}"></script>
 @yield('csutom_scripts')
+
 </html>

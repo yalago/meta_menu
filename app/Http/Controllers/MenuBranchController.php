@@ -18,7 +18,7 @@ class MenuBranchController extends vendorAuthController
         $response  = $client->request('post', $this->ApiUrl . "table-session", [
             'verify' => false,
             'headers' => [
-                'Language' => \LaravelLocalization::getCurrentLocale()
+                'Language' => session()->get('lang')
             ],
             'form_params' => [
                 "table_id" => request()->table_id,
@@ -30,7 +30,7 @@ class MenuBranchController extends vendorAuthController
         // $response  = $client->request('get', $url, [
         //     'verify' => false,
         //     'headers' => [
-        //         'Language' => \LaravelLocalization::getCurrentLocale()
+        //         'Language' => session()->get('lang')
         //     ]
         //
         // ]);
@@ -53,7 +53,7 @@ class MenuBranchController extends vendorAuthController
         $response  = $client->request('get', $url, [
             'verify' => false,
             'headers' => [
-                'Language' => \LaravelLocalization::getCurrentLocale(),
+                'Language' => session()->get('lang'),
 
             ]
 
@@ -127,5 +127,5 @@ class MenuBranchController extends vendorAuthController
     {
         return view('frontend.pages.track_order');
     }
-    
+
 }
