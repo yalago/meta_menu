@@ -113,7 +113,7 @@ class MenuBranchController extends vendorAuthController
         $vendor_info = $this->vendor_info;
         $table_number = $this->table_number['tableNumber'];
 
-        return view('frontend.pages.press_on_cart', compact(['table_number', 'product', 'vendor_uuid', 'vendor_info', 'social', 'pixel']));
+        return view('frontend.pages.product_details', compact(['table_number', 'product', 'vendor_uuid', 'vendor_info', 'social', 'pixel']));
     }
     public function checkout()
     {

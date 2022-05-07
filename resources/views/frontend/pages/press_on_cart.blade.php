@@ -6,12 +6,12 @@ style="background-image: url({{ $product['data']['product_info']['image_big'] }}
 
 @section('content')
 
-<div class="position-relative add-to-cart-pressed">
+<div class="position-relative add-to-cart-pressed pb-5">
     {{-- <span class="close-button">
         <img src="{{ asset('assets/images/close.png') }}" alt="">
     </span> --}}
     <div class="">
-        <div class="d-flex mt-0 pt-5">
+        <div class="d-flex mt-0 pt-3">
             <div class="w-75">
                 <h4>
                     {{ $product['data']['product_info']['product_name'] }}
@@ -67,7 +67,7 @@ style="background-image: url({{ $product['data']['product_info']['image_big'] }}
             @endforeach
         </div>
     </div>
-    <div class="row mt-2 bg-dark-gray px-2 py-3">
+    <div class="row mt-2 bg-dark-gray px-2 py-3 fixed-bottom-addtocart">
         <div class="col-6 flex-row d-flex center-content-vertically">
             <span class="increment-decrement increment  text-light bg-dark center-content mx-1 rounded">
                 +
