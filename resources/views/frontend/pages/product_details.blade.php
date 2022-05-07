@@ -33,27 +33,15 @@ style="background-image: url({{ $product['data']['product_info']['image_big'] }}
                     <div>
                         <h5>{{ $item['cat_name'] }}</h5>
                     </div>
+
                     @foreach($item['addons'] as $addons)
 
                     <div class="row">
                         <div class="col-1">
-                            <input type="checkbox" class="form-check-input checkbox dark" />
-                        </div>
-                        <div class="col-8 ps-0">
-                            {{ $addons['addon_name'] }}
-                        </div>
-                        <div class="col-3 text-end">
-                            {{ $addons['addon_price'] }} ريال
-                        </div>
-                    </div>
-
-                    @endforeach
-                    @foreach($item['addons'] as $addons)
-
-                    <div class="row">
-                        <div class="col-1">
-                            <input type="checkbox" name="addon_radio_name_{{$index}}" data-addon-id="{{ $addons['addon_id'] }}"
-                                        data-addon-price="{{ $addons['addon_price'] }}" class="form-check-input checkbox dark" />
+                            <input type="checkbox" name="addon_radio_name_{{$index}}"
+                                data-addon-id="{{ $addons['addon_id'] }}"
+                                data-addon-price="{{ $addons['addon_price'] }}" class="form-check-input checkbox dark"
+                                name="addon_{{ $addons['addon_id'] }}" value="{{ $addons['addon_id'] }}" />
                         </div>
                         <div class="col-8 ps-0">
                             {{ $addons['addon_name'] }}
@@ -179,7 +167,7 @@ style="background-image: url({{ $product['data']['product_info']['image_big'] }}
     })})
 </script>
 <script>
-        $(document).ready(function() {
+    $(document).ready(function() {
 
             $('#basketBtnArea').removeClass('d-none');
 
@@ -265,7 +253,7 @@ style="background-image: url({{ $product['data']['product_info']['image_big'] }}
                 // not sure if you wanted this, but I thought I'd add it.
                 // get an associative array of just the values.
                 var addonsValues = [];
-                $inputs.each(function(key) {
+                $('input[type="checkbox"]:checked').each(function(key) {
                     addonsValues.push($(this).val());
                 });
 
@@ -281,7 +269,8 @@ style="background-image: url({{ $product['data']['product_info']['image_big'] }}
                     data: {
                         quantity: quantity,
                         table_id: "{{ request()->table_id }}",
-                        addons: addonsValues,
+                        // addons: JSON.stringify(addonsValues) ,
+                        addons:addonsValues ,
                     },
                     beforeSend: function() {
                         $('.loader-ready').addClass('loader');
@@ -330,5 +319,5 @@ style="background-image: url({{ $product['data']['product_info']['image_big'] }}
                 return false;
             }); // add to my cart
         });
-    </script>
+</script>
 @endsection
