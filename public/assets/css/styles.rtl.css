@@ -24,9 +24,11 @@
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
-body{
+
+body {
     font-size: 14px;
 }
+
 img {
     max-width: 100%;
 }
@@ -207,8 +209,15 @@ h6 {
 
 
 .close-button {
-    position: absolute;
+    position: fixed;
+    padding-left: 10px;
+    padding-top: 5px;
+    width: 100%;
+    text-align: left;
+    background-color: #1C1C1C;
     left: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .increment-decrement {
