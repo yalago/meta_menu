@@ -25,5 +25,4 @@
 @yield('scripts')
 <script src="{{ asset('assets/js/scripts.js') }}"></script>
 @yield('csutom_scripts')
-
 </html>
