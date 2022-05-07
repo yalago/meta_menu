@@ -62,16 +62,16 @@ $(document).ready(function () {
     });
 
     $('#menu-trigger').on('click', function () {
-        $('#main-menu').slideToggle();
+        $('#home-products-list').slideToggle();
     });
 
     $('.add-to-cart-in-list').on('click', function () {
-        $('#home-container').hide();
+        $('#home-products-list').hide();
         $('.add-to-cart-pressed').slideToggle();
     });
 
     $('.add-to-cart-pressed .close-button').on('click', function () {
-        $('#home-container').slideToggle();
+        $('#home-products-list').slideToggle();
         $('.add-to-cart-pressed').hide();
     });
     if ($('.status-container.active').length > 0) {
