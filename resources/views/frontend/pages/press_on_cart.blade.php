@@ -131,7 +131,7 @@ style="background-image: url({{ $product['data']['product_info']['image_big'] }}
             });
             // do ajax
             $.ajax({
-                url: "/",
+                url: "{{ route('changeQuantity', ['vendor_uuid' => $vendor_uuid]) }}",
                 type: "POST",
                 data: {
                     table_id: "{{ request()->table_id }}",
@@ -179,7 +179,7 @@ style="background-image: url({{ $product['data']['product_info']['image_big'] }}
                         });
                         // do ajax
                         $.ajax({
-                            url: "/",
+                            url: "{{ route('removeFromBasket', ['vendor_uuid' => $vendor_uuid]) }}",
                             type: "POST",
                             data: {
                                 item_basket_id: itemBasket,
