@@ -115,4 +115,17 @@ class MenuBranchController extends vendorAuthController
 
         return view('frontend.pages.press_on_cart', compact(['table_number', 'product', 'vendor_uuid', 'vendor_info', 'social', 'pixel']));
     }
+    public function checkout()
+    {
+        return view('frontend.pages.checkout');
+    }
+    public function congratulations()
+    {
+        return view('frontend.pages.congratulations');
+    }
+    public function track_order()
+    {
+        return view('frontend.pages.track_order');
+    }
+    
 }

@@ -74,6 +74,16 @@ $(document).ready(function () {
         $('#home-container').slideToggle();
         $('.add-to-cart-pressed').hide();
     });
+    if ($('.status-container.active').length > 0) {
+        let reachedToActive = false;
+        $('.status-container').each(function () {
+            if ($(this).hasClass('active') || reachedToActive) {
+                reachedToActive = true;
+                return;
+            }
+            $(this).addClass('active');
+        });
+    }
 
 });
 
@@ -97,5 +107,11 @@ function playVideo(e) {
     e.querySelector("img").style.display = "none";
     e.querySelector("video").style.display = "block";
     e.querySelector("video").play();
+}
+
+function redirectBack() {
+    if (history.length)
+        history.back()
+    window.location.href = window.homeURL;
 }
 
