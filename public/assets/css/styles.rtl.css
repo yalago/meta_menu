@@ -130,7 +130,7 @@ h6 {
     background-color: #1C1C1C;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    max-height: 40%;
+    max-height: 50%;
     overflow: scroll;
     transition: max-height 0.4s ease-out;
 }
@@ -199,7 +199,6 @@ h6 {
     height: auto;
     opacity: 1;
     transition: height 500ms 500ms, opacity 1000ms 0ms;
-    padding-top: 65px;
 
 }
 
@@ -234,6 +233,21 @@ h6 {
 
 #product-carousel .owl-nav {
     display: none;
+}
+
+.fixed-bottom-addtocart {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    z-index: 3;
+}
+
+.add-to-cart-pressed {}
+
+.product_details {
+    padding-bottom: 60px;
 }
 
 /* Checkout */
@@ -287,3 +301,55 @@ h6 {
 }
 
 /* End track order */
+
+
+
+
+/* Modal */
+.custom_modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #242424c7;
+    z-index: 4;
+}
+
+.custom_modal_content_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+.custom-modal-header {
+    display: flex;
+
+}
+
+.custom-modal-header .close-icon {
+    background-color: #FE724C;
+    border-radius: 50%;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+}
+
+.custom_modal_content {
+    background-color: #ffffffe3;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.custom_modal_content video {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* End modal */

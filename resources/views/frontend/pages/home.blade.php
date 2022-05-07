@@ -39,8 +39,9 @@ style="background-image: url({{ url($vendor_info['vendor_cover_img']) }})"
                     </a>
                 </div>
                 <div class=" center-content-vertically actions ms-auto">
-                    <a class=" rounded-circle bg-primary-color mx-1  center-content add-to-cart-in-list">
-                        <img src="{{ asset('assets/images/basket.png') }}" class="" alt="">
+                    <a href="{{ route('showproductBranch', ['vendor_uuid' => $vendor_uuid, $product['product_id'], 'table_id' => $table_id]) }}"
+                        class="rounded-circle bg-teritary mx-1 center-content add-to-cart-in-list">
+                        <img src="{{ asset('assets/images/plus-rounded.png') }}" alt="">
                     </a>
                     @if ($product['video'] != null)
                     <a class=" rounded-circle bg-gray mx-1 center-content" onclick="togglePlayVideo(this)">
