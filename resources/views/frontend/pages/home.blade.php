@@ -55,52 +55,80 @@ style="background-image: url({{ url($vendor_info['vendor_cover_img']) }})"
 
 
     </div>
-</div>
-<div class="position-relative add-to-cart-pressed display-none">
-    <span class="close-button">
-        <img src="{{ asset('assets/images/close.png') }}" alt="">
-    </span>
-    <div class="d-flex mt-3 pt-5">
-        <div class="w-75">
-            <a href="/product-details">
-                كروك ميسيو</a>
+  
+    <div class="position-relative add-to-cart-pressed display-none">
+        <span class="close-button">
+            <img src="{{ asset('assets/images/close.png') }}" alt="">
+        </span>
+        <div class="d-flex mt-3 pt-5">
+            <div class="w-75">
+                <a href="/product-details">
+                    كروك ميسيو</a>
+            </div>
+            <div class="w-25 text-end">23 ريال</div>
         </div>
-        <div class="w-25 text-end">23 ريال</div>
-    </div>
-    <p class="mt-2 pb-2 bottom-border">
-        خبز التارتين المحشو بلحم الحبش المدخن والجبن السويسري مع صوص الباشاميل والطماطم المجففه يقدم مع الخس وصلصه
-        البلسمك
-        السعرات الحرارية
-    </p>
-    <div class="">
-        <h4 class="text-teritary">الاضافات</h4>
-    </div>
-    <div class="">
-
-       <div class="addon-category">
-            <div>
-                <h3>اضافات</h3>
+        <p class="mt-2 pb-2 bottom-border">
+            خبز التارتين المحشو بلحم الحبش المدخن والجبن السويسري مع صوص الباشاميل والطماطم المجففه يقدم مع الخس وصلصه
+            البلسمك
+            السعرات الحرارية
+        </p>
+        <div class="">
+            <h4 class="text-teritary">الاضافات</h4>
+        </div>
+        <div class="">
+    
+            <div class="addon-category">
+                <div>
+                    <h3>اضافات</h3>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <input type="checkbox" class="form-check-input checkbox dark" />
+                    </div>
+                    <div class="col-8">
+                        جبنة بالمكسرات
+                    </div>
+                    <div class="col-3 text-end">
+                        23 ريال
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <input type="checkbox" class="form-check-input checkbox dark" />
+                    </div>
+                    <div class="col-8">
+                        جبنة بالمكسرات
+                    </div>
+                    <div class="col-3 text-end">
+                        23 ريال
+                    </div>
+                </div>
             </div>
-            <div class="row">
-                <div class="col-1">
-                    <input type="checkbox" class="form-check-input checkbox dark" />
+            <div class="addon-category">
+                <div>
+                    <h3>اضافات</h3>
                 </div>
-                <div class="col-8">
-                    جبنة بالمكسرات
+                <div class="row">
+                    <div class="col-1">
+                        <input type="checkbox" class="form-check-input checkbox dark" />
+                    </div>
+                    <div class="col-8">
+                        جبنة بالمكسرات
+                    </div>
+                    <div class="col-3 text-end">
+                        23 ريال
+                    </div>
                 </div>
-                <div class="col-3 text-end">
-                    23 ريال
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                    <input type="checkbox" class="form-check-input checkbox dark" />
-                </div>
-                <div class="col-8">
-                    جبنة بالمكسرات
-                </div>
-                <div class="col-3 text-end">
-                    23 ريال
+                <div class="row">
+                    <div class="col-1">
+                        <input type="checkbox" class="form-check-input checkbox dark" />
+                    </div>
+                    <div class="col-8">
+                        جبنة بالمكسرات
+                    </div>
+                    <div class="col-3 text-end">
+                        23 ريال
+                    </div>
                 </div>
             </div>
         </div>
