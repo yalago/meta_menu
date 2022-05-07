@@ -12,48 +12,49 @@ style="background-image: url({{ url($vendor_info['vendor_cover_img']) }})"
                 @foreach ($categories as $item)
                 <div class="item center-content-vertically border border-1 p-3 custom-rounded-border text-light active-cat-pill"
                     data-target="cat-{{ $item['category_id'] }}">
-                    <img src="assets/images/meal-slice.png" class="me-2" alt="">
+                    <img src="{{ asset('assets/images/meal-slice.png') }}" class="me-2" alt="">
                     {{ $item['category_name'] }}
                 </div>
                 @endforeach
             </div>
         </div>
-        @foreach ($categories as $item)
-        <div id="cat-{{ $item['category_id'] }}" class="product-list-category active-cat">
-            @foreach ($products['data']['products_menu'] as $product)
-            <div class="d-flex py-2 product-in-list">
-                <div class="w-25 center-content-vertically   image-video-wrap">
-                    <a
-                        href="{{ route('showproductBranch', ['vendor_uuid' => $vendor_uuid, $product['product_id'], 'table_id' => $table_id]) }}">
-                        <img src="{{ $product['image'] }}" alt=""> </a>
-                    @if ($product['video'] != null)
-                    <video playsinline controls="false" muted="muted" class="display-none meal-video">
-                        <source src="{{ $product['video'] }}" />
-                    </video>
-                    @endif
+        <div class="categories-container">
+            @foreach ($categories as $item)
+            <div id="cat-{{ $item['category_id'] }}" class="product-list-category active-cat">
+                @foreach ($products['data']['products_menu'] as $product)
+                <div class="d-flex py-2 product-in-list">
+                    <div class="w-25 center-content-vertically image-video-wrap">
+                        <a
+                            href="{{ route('showproductBranch', ['vendor_uuid' => $vendor_uuid, $product['product_id'], 'table_id' => $table_id]) }}">
+                            <img src="{{ $product['image'] }}" alt="" class="rounded-circle"> </a>
+                        @if ($product['video'] != null)
+                        <video playsinline controls="false" muted="muted" class="display-none meal-video">
+                            <source src="{{ $product['video'] }}" />
+                        </video>
+                        @endif
+                    </div>
+                    <div class="text-light px-3 center-content-vertically">
+                        <a href="{{ route('showproductBranch', ['vendor_uuid' => $vendor_uuid, $product['product_id'], 'table_id' => $table_id]) }}"
+                            class="text-light">
+                            {{ $product['product_name'] }}
+                        </a>
+                    </div>
+                    <div class=" center-content-vertically actions ms-auto">
+                        <a href="{{ route('showproductBranch', ['vendor_uuid' => $vendor_uuid, $product['product_id'], 'table_id' => $table_id]) }}"
+                            class="rounded-circle bg-teritary mx-1 center-content add-to-cart-in-list">
+                            <img src="{{ asset('assets/images/plus-rounded.png') }}" alt="">
+                        </a>
+                        @if ($product['video'] != null)
+                        <a class=" rounded-circle bg-gray mx-1 center-content" onclick="togglePlayVideo(this)">
+                            <img src="{{ asset('assets/images/rictangle.png') }}" alt="">
+                        </a>
+                        @endif
+                    </div>
                 </div>
-                <div class="text-light px-3 center-content-vertically">
-                    <a href="{{ route('showproductBranch', ['vendor_uuid' => $vendor_uuid, $product['product_id'], 'table_id' => $table_id]) }}"
-                        class="text-light">
-                        {{ $product['product_name'] }}
-                    </a>
-                </div>
-                <div class=" center-content-vertically actions ms-auto">
-                    <a href="{{ route('showproductBranch', ['vendor_uuid' => $vendor_uuid, $product['product_id'], 'table_id' => $table_id]) }}"
-                        class="rounded-circle bg-teritary mx-1 center-content add-to-cart-in-list">
-                        <img src="{{ asset('assets/images/plus-rounded.png') }}" alt="">
-                    </a>
-                    @if ($product['video'] != null)
-                    <a class=" rounded-circle bg-gray mx-1 center-content" onclick="togglePlayVideo(this)">
-                        <img src="{{ asset('assets/images/rictangle.png') }}" alt="">
-                    </a>
-                    @endif
-                </div>
+                @endforeach
             </div>
             @endforeach
         </div>
-        @endforeach
-
 
     </div>
 
