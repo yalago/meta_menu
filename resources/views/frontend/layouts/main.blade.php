@@ -24,5 +24,5 @@
 <script src="{{ asset('assets/lib/jquery/jquery-3.6.0.min.js') }}"></script>
 @yield('scripts')
 <script src="{{ asset('assets/js/scripts.js') }}"></script>
-
+@yield('csutom_scripts')
 </html>

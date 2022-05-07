@@ -7,7 +7,7 @@ style="background-image: url({{ url($vendor_info['vendor_cover_img']) }})"
 @section('content')
 <div id="home-container">
     <div id="home-products-list" class="">
-        <div class="home-carousel-container position-fixed rounded w-100 p-2 bg-black">
+        <div class="home-carousel-container position-fixed  w-100 p-2 bg-black">
             <div id="products-categories-slider" class="owl-carousel owl-theme ">
                 @foreach ($categories as $item)
                 <div class="item center-content-vertically border border-1 p-3 custom-rounded-border text-light active-cat-pill"
@@ -56,129 +56,6 @@ style="background-image: url({{ url($vendor_info['vendor_cover_img']) }})"
 
     </div>
 
-    <div class="position-relative add-to-cart-pressed display-none">
-        <span class="close-button">
-            <img src="{{ asset('assets/images/close.png') }}" alt="">
-        </span>
-        <div class="">
-            <div class="d-flex mt-0 pt-5">
-                <div class="w-75">
-                    <a href="/product-details">
-                        كروك ميسيو</a>
-                </div>
-                <div class="w-25 text-end">23 ريال</div>
-            </div>
-            <p class="mt-2 pb-2 bottom-border">
-                خبز التارتين المحشو بلحم الحبش المدخن والجبن السويسري مع صوص الباشاميل والطماطم المجففه يقدم مع الخس
-                وصلصه
-                البلسمك
-                السعرات الحرارية
-            </p>
-            <div class="">
-                <h4 class="text-teritary">الاضافات</h4>
-            </div>
-            <div class="">
-
-                <div class="addon-category">
-                    <div>
-                        <h3>اضافات</h3>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                            <input type="checkbox" class="form-check-input checkbox dark" />
-                        </div>
-                        <div class="col-8">
-                            جبنة بالمكسرات
-                        </div>
-                        <div class="col-3 text-end">
-                            23 ريال
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                            <input type="checkbox" class="form-check-input checkbox dark" />
-                        </div>
-                        <div class="col-8">
-                            جبنة بالمكسرات
-                        </div>
-                        <div class="col-3 text-end">
-                            23 ريال
-                        </div>
-                    </div>
-                </div>
-                <div class="addon-category">
-                    <div>
-                        <h3>اضافات</h3>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                            <input type="checkbox" class="form-check-input checkbox dark" />
-                        </div>
-                        <div class="col-8">
-                            جبنة بالمكسرات
-                        </div>
-                        <div class="col-3 text-end">
-                            23 ريال
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                            <input type="checkbox" class="form-check-input checkbox dark" />
-                        </div>
-                        <div class="col-8">
-                            جبنة بالمكسرات
-                        </div>
-                        <div class="col-3 text-end">
-                            23 ريال
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="addon-category">
-                <div>
-                    <h3>اضافات</h3>
-                </div>
-                <div class="row">
-                    <div class="col-1">
-                        <input type="checkbox" class="form-check-input checkbox dark" />
-                    </div>
-                    <div class="col-8">
-                        جبنة بالمكسرات
-                    </div>
-                    <div class="col-3 text-end">
-                        23 ريال
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-1">
-                        <input type="checkbox" class="form-check-input checkbox dark" />
-                    </div>
-                    <div class="col-8">
-                        جبنة بالمكسرات
-                    </div>
-                    <div class="col-3 text-end">
-                        23 ريال
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-2 bg-dark-gray px-2 py-3">
-            <div class="col-6 flex-row d-flex center-content-vertically">
-                <span class="increment-decrement increment  text-light bg-dark center-content mx-1 rounded">
-                    +
-                </span>
-                <span class="center-content mx-3 product-quantity">1</span>
-                <span class="increment-decrement decrement text-light bg-dark center-content mx-1 rounded">
-                    -
-                </span>
-            </div>
-            <div class="col-6 center-content-vertically">
-                <button class="btn bg-teritary w-100 text-light">
-                    اضافة الى السلة
-                </button>
-            </div>
-        </div>
-    </div>
 
 </div>
 </div>
@@ -189,4 +66,31 @@ style="background-image: url({{ url($vendor_info['vendor_cover_img']) }})"
 @section('styles')
 <link href="{{ asset('assets/lib/OwlCarousel2/dist/assets/owl.carousel.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/lib/OwlCarousel2/dist/assets/owl.theme.default.min.css') }}" rel="stylesheet">
+@endsection
+@section('csutom_scripts')
+<script>
+    $(document).ready(function () {
+    $('#products-categories-slider').owlCarousel({
+    // loop: true,
+    margin: 10,
+    responsiveClass: true,
+    navigation: false,
+    rtl: true,
+    responsive: {
+    0: {
+    items: 3,
+    nav: true
+    },
+    600: {
+    items: 3,
+    nav: false
+    },
+    1000: {
+    items: 5,
+    nav: true,
+    loop: false
+    }
+    },
+    })})
+</script>
 @endsection
