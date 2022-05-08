@@ -14,7 +14,7 @@
 <body>
     <div id="main-wrap" @yield('background')>
         @include('frontend.layouts.sections.header_home')
-        <div id="content-wrap" class="position-absolute mh-50 w-100 text-light p-3 pt-0">
+        <div id="content-wrap" class="position-fixed mh-50 w-100 text-light p-3 pt-0">
             @yield('content')
         </div>
         @yield('footer')
