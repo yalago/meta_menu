@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\View;
-
+use Illuminate\Support\Facades\App;
 
 class vendorAuthController extends Controller
 {
@@ -121,5 +121,16 @@ class vendorAuthController extends Controller
         // $pixel = ($response->getBody());
         // $pixel = json_decode($pixel, true);
         // $this->pixel = $pixel['data'];
+    }
+
+    public function changeLanguage(Request $request, $language)
+    {
+        // dd($language);
+        $status = in_array($language, ['ar', 'en']);
+        $lang = $status ? $language : 'ar';
+        App::setLocale($lang);
+        $request->session()->put('lang', $lang);
+        // dd(session()->get('lang') . ' CURRENT: ' . App::currentLocale());
+        return redirect()->back();
     }
 }
