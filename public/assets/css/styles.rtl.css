@@ -153,8 +153,9 @@ h6 {
 
 .home-carousel-container {
     right: 0;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    top: 0;
+    /* border-top-left-radius: 20px;
+    border-top-right-radius: 20px; */
 }
 
 #home-products-list .actions a {
@@ -167,7 +168,7 @@ h6 {
     height: 75px;
 }
 .categories-container{
-    padding-top: 70px;
+    /* padding-top: 70px; */
 }
 .center-content {
     display: flex;
@@ -267,7 +268,7 @@ h6 {
 }
 
 #content-wrap-style2>div {
-    padding-top: 85px;
+    padding-top: 75px;
 }
 
 #confrim-order {
