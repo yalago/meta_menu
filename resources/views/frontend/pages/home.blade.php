@@ -23,7 +23,7 @@ style="background-image: url({{ url($vendor_info['vendor_cover_img']) }})"
             <div id="cat-{{ $item['category_id'] }}" class="product-list-category active-cat">
                 @foreach ($products['data']['products_menu'] as $product)
                 <div class="d-flex py-2 product-in-list">
-                    <div class="w-25 center-content-vertically image-video-wrap">
+                    <div class="center-content-vertically image-video-wrap">
                         <a
                             href="{{ route('showproductBranch', ['vendor_uuid' => $vendor_uuid, $product['product_id'], 'table_id' => $table_id]) }}">
                             <img src="{{ $product['image'] }}" alt="" class="rounded-circle"> </a>
@@ -33,7 +33,7 @@ style="background-image: url({{ url($vendor_info['vendor_cover_img']) }})"
                         </video>
                         @endif
                     </div>
-                    <div class="text-light px-3 center-content-vertically">
+                    <div class="text-light px-2 center-content-vertically">
                         <a href="{{ route('showproductBranch', ['vendor_uuid' => $vendor_uuid, $product['product_id'], 'table_id' => $table_id]) }}"
                             class="text-light">
                             {{ $product['product_name'] }}
