@@ -7,10 +7,10 @@
                         <img src="{{ asset('assets/images/rounded-button.png') }}" alt="">
                     </a>
                     <div id="main-menu" class="position-absolute display-none">
-                        <a class="d-block w-100">
+                        <a class="d-block w-100 mt-2">
                             <img src="{{ asset('assets/images/rounded-button.png') }}" alt="">
                         </a>
-                        <a class="d-block w-100">
+                        <a class="d-block w-100 mt-2">
                             <img src="{{ asset('assets/images/rounded-button.png') }}" alt="">
                         </a>
                     </div>

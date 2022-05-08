@@ -25,6 +25,10 @@
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
 
+html {
+    max-height: 100vh;
+}
+
 body {
     font-size: 14px;
 }
@@ -167,9 +171,11 @@ h6 {
     width: 75px;
     height: 75px;
 }
-.categories-container{
+
+.categories-container {
     /* padding-top: 70px; */
 }
+
 .center-content {
     display: flex;
     align-items: center;
