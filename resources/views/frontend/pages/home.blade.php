@@ -40,9 +40,9 @@ style="background-image: url({{ url($vendor_info['vendor_cover_img']) }})"
                         </a>
                     </div>
                     <div class=" center-content-vertically actions ms-auto">
-                        <a href="{{ route('showproductBranch', ['vendor_uuid' => $vendor_uuid, $product['product_id'], 'table_id' => $table_id]) }}"
-                            class="mx-1 center-content add-to-cart-in-list">
-                            <img src="{{ asset('assets/images/plus-rounded.png') }}" class="w-100" alt="">
+                        <a class="mx-1 center-content add-to-cart-in-list"
+                            data-product-id="{{ $product['product_id'] }}">
+                            <img src="{{ asset('assets/images/basket.png') }}" class="w-100" alt="">
                         </a>
                         @if ($product['video'] != null)
                         <a class=" rounded-circle bg-gray mx-1 center-content" onclick="togglePlayVideo(this)">
@@ -57,13 +57,19 @@ style="background-image: url({{ url($vendor_info['vendor_cover_img']) }})"
         </div>
 
     </div>
-
+    <div class="row add-to-cart-pressed display-none pt-2 pb-5">
+        <span class="close-button">
+            <img src="{{ asset('assets/images/close.png') }}" alt="">
+        </span>
+        <div id="loaded-product"></div>
+    </div>
 
 </div>
 </div>
 @endsection
 @section('scripts')
 <script src="{{ asset('assets/lib/OwlCarousel2/dist/owl.carousel.min.js') }}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 @endsection
 @section('styles')
 <link href="{{ asset('assets/lib/OwlCarousel2/dist/assets/owl.carousel.min.css') }}" rel="stylesheet">
@@ -93,6 +99,53 @@ style="background-image: url({{ url($vendor_info['vendor_cover_img']) }})"
     loop: false
     }
     },
-    })})
+    })
+    
+    $('.add-to-cart-in-list').on('click',function () {
+        let productId=$(this).attr('data-product-id');
+            $.ajaxSetup({
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+            });
+            // do ajax
+            $.ajax({
+            url: "{{ route('loadProduct', ['vendor_uuid' => $vendor_uuid,'table_id'=>$table_id]) }}",
+            type: "GET",
+            data: {
+            product_id: productId,
+            table_id: "{{ request()->table_id }}",
+            },
+            beforeSend: function() {
+            $('.loader-ready').addClass('loader');
+            $('.loader-ready').removeClass('d-none');
+            },
+            success: function(response) {
+            $('.loader-ready').removeClass('loader');
+            $('.loader-ready').addClass('d-none');
+            console.log();
+            if (response) {
+            // on success display alert success
+            // remove any data
+            // localStorage.setItem('count_products', response.count_products);
+            $('#loaded-product').html(response);
+            $('#home-products-list').slideToggle();
+            $('.add-to-cart-pressed').show();
+            // const swalWithBootstrapButtons = Swal.mixin({
+            // customClass: {
+            // confirmButton: 'btn btn-sm my-1 mx-1 btn-dark text-white',
+            // denyButton: 'btn btn-sm my-1 mx-1 btn-dark text-white'
+            // },
+            // buttonsStyling: false
+            // });
+            
+         
+            
+            }
+            },
+            });
+    })
+    
+    })
 </script>
 @endsection

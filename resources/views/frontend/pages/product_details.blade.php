@@ -1,100 +1,100 @@
 @extends('frontend.layouts.main')
 @section('background')
-    style="background-image: url({{ $product['data']['product_info']['image_big'] }})"
+style="background-image: url({{ $product['data']['product_info']['image_big'] }})"
 @endsection
 
 
 @section('content')
-    <div id="" class="spacer">
-        <div class="row product_details">
-            <div class="col-6">
-                <div>
-                    <h5>{{ $product['data']['product_info']['product_name'] }}</h5>
-                </div>
+<div id="" class="spacer">
+    <div class="row product_details">
+        <div class="col-6">
+            <div>
+                <h5>{{ $product['data']['product_info']['product_name'] }}</h5>
             </div>
-            <div class="col-6 text-end d-flex flex-row justify-content-end">
-                <a class="bg-teritary  button-size-small center-content rounded-circle show-video"
-                    data-video_URL="{{ asset('assets/images/video.mp4') }}">
-                    <img src="{{ asset('assets/images/play.png') }}" alt="">
-                </a>
-            </div>
+        </div>
+        <div class="col-6 text-end d-flex flex-row justify-content-end">
+            <a class="bg-teritary  button-size-small center-content rounded-circle show-video"
+                data-video_URL="{{ asset('assets/images/video.mp4') }}">
+                <img src="{{ asset('assets/images/play.png') }}" alt="">
+            </a>
+        </div>
 
-            <p class="mt-1">
-                {{ $product['data']['product_info']['product_desc'] }}
-            </p>
+        <p class="mt-1">
+            {{ $product['data']['product_info']['product_desc'] }}
+        </p>
 
-            <input type="hidden" name="prodprice" value="{{ $product['data']['product_info']['price'] }}"
-                id="product_price">
-            <input type="hidden" name="prodprice" value="{{ $product['data']['product_info']['product_id'] }}"
-                id="product_id">
+        <input type="hidden" name="prodprice" value="{{ $product['data']['product_info']['price'] }}"
+            id="product_price">
+        <input type="hidden" name="prodprice" value="{{ $product['data']['product_info']['product_id'] }}"
+            id="product_id">
+        <div class="">
+
             <div class="">
+                <h4 class="text-teritary">الاضافات</h4>
+            </div>
+            <div class="addons-container">
+                @foreach ($product['data']['product_info']['addons']['addon_category'] as $index => $item)
+                <div class="addon-category mb-4">
+                    <div>
+                        <h5>{{ $item['cat_name'] }}</h5>
+                    </div>
+                    @foreach ($item['addons'] as $addons)
+                    <div class="row">
+                        @if ($item['cat_choose_type'] == 'single')
+                        <div class="col-1">
+                            <div class="iradio">
 
-                <div class="">
-                    <h4 class="text-teritary">الاضافات</h4>
-                </div>
-                <div class="addons-container">
-                    @foreach ($product['data']['product_info']['addons']['addon_category'] as $index => $item)
-                        <div class="addon-category mb-4">
-                            <div>
-                                <h5>{{ $item['cat_name'] }}</h5>
+                                <input type="checkbox" name="addon_radio_name_{{ $index }}"
+                                    data-addon-id="{{ $addons['addon_id'] }}"
+                                    data-addon-price="{{ $addons['addon_price'] }}"
+                                    class="form-check-input checkbox dark addonHandler addonItem" />
                             </div>
-                            @foreach ($item['addons'] as $addons)
-                                <div class="row">
-                                    @if ($item['cat_choose_type'] == 'single')
-                                        <div class="col-1">
-                                            <div class="iradio">
-
-                                                <input type="checkbox" name="addon_radio_name_{{ $index }}"
-                                                    data-addon-id="{{ $addons['addon_id'] }}"
-                                                    data-addon-price="{{ $addons['addon_price'] }}"
-                                                    class="form-check-input checkbox dark addonHandler addonItem" />
-                                            </div>
-                                        </div>
-                                    @else
-                                        <div class="col-1">
-                                            <div class="icheckbox">
-
-                                                <input type="checkbox" name="addon_radio_name_{{ $index }}"
-                                                    data-addon-id="{{ $addons['addon_id'] }}"
-                                                    data-addon-price="{{ $addons['addon_price'] }}"
-                                                    class="form-check-input checkbox dark addonHandler addonItem" />
-                                            </div>
-                                        </div>
-                                    @endif
-                                    <div class="col-8 ps-0">
-                                        {{ $addons['addon_name'] }}
-                                    </div>
-                                    <div class="col-3 text-end">
-                                        {{ $addons['addon_price'] }} ريال
-                                    </div>
-                                </div>
-                            @endforeach
                         </div>
+                        @else
+                        <div class="col-1">
+                            <div class="icheckbox">
+
+                                <input type="checkbox" name="addon_radio_name_{{ $index }}"
+                                    data-addon-id="{{ $addons['addon_id'] }}"
+                                    data-addon-price="{{ $addons['addon_price'] }}"
+                                    class="form-check-input checkbox dark addonHandler addonItem" />
+                            </div>
+                        </div>
+                        @endif
+                        <div class="col-8 ps-0">
+                            {{ $addons['addon_name'] }}
+                        </div>
+                        <div class="col-3 text-end">
+                            {{ $addons['addon_price'] }} ريال
+                        </div>
+                    </div>
                     @endforeach
                 </div>
+                @endforeach
             </div>
+        </div>
 
-            <div class="row mt-2 bg-dark-gray px-2 py-3 fixed-bottom-addtocart">
+        <div class="row mt-2 bg-dark-gray px-2 py-3 fixed-bottom-addtocart">
 
 
-                <div class="col-6 flex-row d-flex center-content-vertically counter">
+            <div class="col-6 flex-row d-flex center-content-vertically counter">
 
-                    <span class="increment-decrement increment  text-light bg-dark center-content mx-1 rounded">
-                        +
-                    </span>
-                    <span class="center-content mx-3 product-quantity counter-number">1</span>
-                    <span class="increment-decrement decrement text-light bg-dark center-content mx-1 rounded">
-                        -
-                    </span>
-                </div>
-                <div class="col-6 center-content-vertically">
-                    <button href="javascript:void(0)" id="addToMyCart" class="btn bg-teritary w-100 text-light">
-                        اضافة الى السلة
-                    </button>
-                </div>
+                <span class="increment-decrement increment  text-light bg-dark center-content mx-1 rounded">
+                    +
+                </span>
+                <span class="center-content mx-3 product-quantity counter-number">1</span>
+                <span class="increment-decrement decrement text-light bg-dark center-content mx-1 rounded">
+                    -
+                </span>
             </div>
+            <div class="col-6 center-content-vertically">
+                <button href="javascript:void(0)" id="addToMyCart" class="btn bg-teritary w-100 text-light">
+                    اضافة الى السلة
+                </button>
+            </div>
+        </div>
 
-            {{-- <div class="owl-carousel" id="product-carousel">
+        {{-- <div class="owl-carousel" id="product-carousel">
             <div class="item">
                 <img src="{{ asset('assets/images/single-product-thumbnail.png') }}" alt=""
                     class="custom-rounded-border border">
@@ -132,43 +132,43 @@
             </div>
         </div> --}}
 
-            <div class="custom_modal display-none">
-                <div class="custom_modal_content_wrap">
-                    <div class="custom-modal-header">
-                        <span class="close-icon">
-                            <img src="{{ asset('assets/images/close.png') }}" alt="">
-                        </span>
-                    </div>
-                    <div class="custom_modal_content">
-                        <video controls>
-                            <source src="" type="video/mp4">
-                            <source src="" type="video/ogg">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
+        <div class="custom_modal display-none">
+            <div class="custom_modal_content_wrap">
+                <div class="custom-modal-header">
+                    <span class="close-icon">
+                        <img src="{{ asset('assets/images/close.png') }}" alt="">
+                    </span>
+                </div>
+                <div class="custom_modal_content">
+                    <video controls>
+                        <source src="" type="video/mp4">
+                        <source src="" type="video/ogg">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             </div>
-
-
         </div>
+
+
     </div>
+</div>
 @endsection
 @section('scripts')
-    <script src="{{ asset('assets/lib/OwlCarousel2/dist/owl.carousel.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js" type="text/javascript"></script>
-    <script src="{{ asset('vendor/zoom-master/jquery.zoom.min.js') }}" type="text/javascript"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{{ asset('assets/lib/OwlCarousel2/dist/owl.carousel.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js" type="text/javascript"></script>
+<script src="{{ asset('vendor/zoom-master/jquery.zoom.min.js') }}" type="text/javascript"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 @endsection
 @section('styles')
-    <link href="{{ asset('assets/lib/OwlCarousel2/dist/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/lib/OwlCarousel2/dist/assets/owl.theme.default.min.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/lib/OwlCarousel2/dist/assets/owl.carousel.min.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/lib/OwlCarousel2/dist/assets/owl.theme.default.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('csutom_scripts')
 
-    <script>
-        $(document).ready(function() {
+<script>
+    $(document).ready(function() {
             $('#product-carousel').owlCarousel({
                 // loop: true,
                 margin: 10,
@@ -192,11 +192,11 @@
                 },
             })
         })
-    </script>
- 
+</script>
 
-    <script>
-        $(document).ready(function() {
+
+<script>
+    $(document).ready(function() {
 
             $('input.addonItem').on('ifClicked', function(event) {
                 if ($(event.target).is(':checked')) {
@@ -294,9 +294,7 @@
                     data: {
                         quantity: quantity,
                         table_id: "{{ request()->table_id }}",
-
                         addons: addons,
-
                     },
                     beforeSend: function() {
                         $('.loader-ready').addClass('loader');
@@ -344,6 +342,5 @@
             }); // add to my cart
 
         })
-    </script>
+</script>
 @endsection
-
