@@ -50,7 +50,6 @@ class MenuBranchController extends vendorAuthController
     }
     public function category($vendor_uuid, $table_id)
     {
-
         $url = $this->ApiUrl . "table?table_id=" . $table_id;
         $client  = new Client();
         $response  = $client->request('get', $url, [
@@ -59,7 +58,6 @@ class MenuBranchController extends vendorAuthController
                 'Language' => session()->get('lang'),
 
             ]
-
         ]);
         $category = ($response->getBody());
         $category = json_decode($category, true);
@@ -85,7 +83,6 @@ class MenuBranchController extends vendorAuthController
                 'Language' => session()->get('lang')
             ]
         ]);
-
         $vendor_info = $this->vendor_info;
         $product = ($response->getBody());
         $products = json_decode($product, true);
@@ -99,12 +96,6 @@ class MenuBranchController extends vendorAuthController
         $pixel = $this->pixel;
         $categories = $this->categoriesBranch;
         $table_number = $this->table_number['tableNumber'];
-
-
-
-
-
-
         return view('frontend.pages.home', compact(['products', 'vendor_uuid', 'categories', 'table_number', 'category_id', 'social', 'vendor_info', 'pixel', 'table_id']));
     }
     public function product()

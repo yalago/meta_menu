@@ -126,14 +126,15 @@ class OrderBasketController extends vendorAuthController
         // "addons" => null
 
         $addons = [];
+
         if (!empty($request->addons)) {
 
             foreach ($request->addons as $addon) {
                 $addons[]['addon_id'] = $addon['value'] ?? $addon;
             }
-            $addons =  json_encode($addons);
+            $addons = json_encode($addons);
         } else {
-            $addons =  $addons;
+            $addons = $addons;
         }
 
         $url = $this->ApiUrl . "basket-table";
@@ -152,7 +153,7 @@ class OrderBasketController extends vendorAuthController
             ]
         ]);
         $result = ($response->getBody());
-        $result = json_decode($result, true);
+        return $result = json_decode($result, true);
 
 
         if ($result['status']['HTTP_code'] == 200)
