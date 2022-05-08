@@ -18,6 +18,7 @@
                     <img src="{{ asset('assets/images/play.png') }}" alt="">
                 </a>
             </div>
+
             <p class="mt-1">
                 {{ $product['data']['product_info']['product_desc'] }}
             </p>
@@ -74,6 +75,7 @@
             </div>
 
             <div class="row mt-2 bg-dark-gray px-2 py-3 fixed-bottom-addtocart">
+
 
                 <div class="col-6 flex-row d-flex center-content-vertically counter">
 
@@ -164,6 +166,7 @@
 @endsection
 
 @section('csutom_scripts')
+
     <script>
         $(document).ready(function() {
             $('#product-carousel').owlCarousel({
@@ -190,6 +193,7 @@
             })
         })
     </script>
+ 
 
     <script>
         $(document).ready(function() {
@@ -270,8 +274,10 @@
             // $('#productBasketTotalPrice span').html(product_price);
 
             // add to cart
+
             $('#addToMyCart').on('click', function() {
 
+ 
 
                 let quantity = $('.counter-number').html();
                 let addons = $('#basketAreaForm').serializeArray();
@@ -288,7 +294,9 @@
                     data: {
                         quantity: quantity,
                         table_id: "{{ request()->table_id }}",
+
                         addons: addons,
+
                     },
                     beforeSend: function() {
                         $('.loader-ready').addClass('loader');
@@ -334,6 +342,8 @@
 
                 return false;
             }); // add to my cart
+
         })
     </script>
 @endsection
+

@@ -147,6 +147,10 @@ h6 {
     border-bottom: 1px solid #595959;
 }
 
+#home-products-list .product-in-list:last-of-type {
+    border: none;
+}
+
 .home-carousel-container {
     right: 0;
     border-top-left-radius: 20px;
@@ -158,6 +162,13 @@ h6 {
     height: 30px;
 }
 
+.image-video-wrap img {
+    width: 75px;
+    height: 75px;
+}
+.categories-container{
+    padding-top: 70px;
+}
 .center-content {
     display: flex;
     align-items: center;
