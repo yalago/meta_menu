@@ -21,10 +21,10 @@ $(document).ready(function () {
     //     $('.add-to-cart-pressed').slideToggle();
     // });
 
-    // $('.add-to-cart-pressed .close-button').on('click', function () {
-    //     $('#home-products-list').slideToggle();
-    //     $('.add-to-cart-pressed').hide();
-    // });
+    $('.add-to-cart-pressed .close-button').on('click', function () {
+        $('#home-products-list').slideToggle();
+        $('.add-to-cart-pressed').hide();
+    });
     if ($('.status-container.active').length > 0) {
         let reachedToActive = false;
         $('.status-container').each(function () {

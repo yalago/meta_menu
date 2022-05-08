@@ -140,4 +140,21 @@ class MenuBranchController extends vendorAuthController
     {
         return view('frontend.pages.track_order');
     }
+
+    public function loadProduct()
+    {
+        $vendor_uuid = request()->vendor_uuid;
+        $product_id = request()->product_id;
+        $url = $this->ApiUrl . "product-info?product_id=$product_id";
+        $client  = new Client();
+        $response  = $client->request('get', $url, [
+            'verify' => false,
+            'headers' => [
+                'Language' => session()->get('lang')
+            ]
+        ]);
+        $product = ($response->getBody());
+        $loaded_product = json_decode($product, true);
+        return view('frontend.pages.product_template', compact(['loaded_product']));
+    }
 }

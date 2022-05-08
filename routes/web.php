@@ -34,4 +34,6 @@ Route::group(['prefix' => '{vendor_uuid}', 'middleware' => ['apiCheckVendor']], 
     Route::get('checkout', [App\Http\Controllers\MenuBranchController::class, 'checkout'])->name('checkout');
     Route::get('track_order', [App\Http\Controllers\MenuBranchController::class, 'track_order'])->name('track_order');
     Route::get('congratulations', [App\Http\Controllers\MenuBranchController::class, 'congratulations'])->name('congratulations');
+    Route::get('loadProduct/{table_id}', [App\Http\Controllers\MenuBranchController::class, 'loadProduct'])->name('loadProduct');
+
 });
