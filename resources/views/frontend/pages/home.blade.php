@@ -7,7 +7,7 @@ style="background-image: url({{ url($vendor_info['vendor_cover_img']) }})"
 @section('content')
 <div id="home-container">
     <div id="home-products-list" class="">
-        <div class="home-carousel-container position-fixed  w-100 p-2 bg-black">
+        <div class="home-carousel-container position-sticky  w-100 p-2 bg-black">
             <div id="products-categories-slider" class="owl-carousel owl-theme ">
                 @foreach ($categories as $item)
                 <div class="item center-content-vertically border border-1 p-3 custom-rounded-border text-light active-cat-pill"

@@ -51,7 +51,7 @@ $(document).ready(function () {
         for (var i = 0; i < changedTouches.length; i++) {
             var touch = changedTouches[i];
             if (touch.pageY < lastTouchYPosition) {
-                $('#content-wrap').css('max-height', '90%')
+                $('#content-wrap').css('max-height', '75%')
                 // console.log(i);
                 // console.log(changedTouches.length-1);
 
