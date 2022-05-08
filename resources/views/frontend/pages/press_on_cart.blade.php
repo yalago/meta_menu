@@ -120,9 +120,12 @@
     <script src="{{ asset('assets/lib/OwlCarousel2/dist/owl.carousel.min.js') }}">
         <script src = "assets/lib/OwlCarousel2/dist/owl.carousel.min.js" >
         <script src="{{ asset('vendor/zoom-master/jquery.zoom.min.js') }}" type="text/javascript"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    </script>
+
+
 @endsection
 @section('styles')
     <link href="{{ asset('assets/lib/OwlCarousel2/dist/assets/owl.carousel.min.css') }}" rel="stylesheet">
@@ -268,6 +271,7 @@
                     success: function(response) {
                         $('.loader-ready').removeClass('loader');
                         $('.loader-ready').addClass('d-none');
+                        console.log(response);
                         if (response.status_code == 200) {
                             localStorage.setItem('count_products', response.count_products);
                             $('#basketBtnArea #price').html(response.count_products);
