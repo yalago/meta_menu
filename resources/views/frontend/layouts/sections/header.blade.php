@@ -2,7 +2,9 @@
     <div class="w-25 text-primary center-content-vertically">
         <div class="me-2 ">
             <div class="position-relative">
-                <a id="menu-trigger" onclick="redirectBack()">
+                <a id="menu-trigger"
+                    href="{{ route('branch', ['vendor_uuid' => $vendor_uuid, 'table_id' => request()->table_id]) }}"
+                    click="redirectBack()">
                     <img src="{{ asset('assets/images/right-arrow.png') }}" alt="">
                 </a>
             </div>
@@ -10,9 +12,9 @@
 
     </div>
     <div class="w-50 text-primary center-content-vertically justify-content-center">
-       <h3 class="mb-3 text-center">
-           @yield('page-title')
-       </h3>
+        <h3 class="mb-3 text-center">
+            @yield('page-title')
+        </h3>
     </div>
     {{-- <div class="ms-auto w-50">
         <button
@@ -25,5 +27,5 @@
     </div> --}}
 </div>
 <script>
-    window.window.homeURL='/gerizapaints/menu/556/1'
+    window.window.homeURL = '/gerizapaints/menu/556/1'
 </script>

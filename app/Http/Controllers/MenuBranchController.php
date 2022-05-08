@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\App;
 
 class MenuBranchController extends vendorAuthController
 {
@@ -13,6 +14,7 @@ class MenuBranchController extends vendorAuthController
     }
     public function branch($vendor_uuid, $table_id)
     {
+
         // add a new session handler
         $client  = new Client();
         $response  = $client->request('post', $this->ApiUrl . "table-session", [
@@ -40,8 +42,9 @@ class MenuBranchController extends vendorAuthController
         $vendor_info = $this->vendor_info;
         $social      = $this->social;
         $pixel = $this->pixel;
+
         //category_id}/{table_id
-        return redirect(route('productCategoryBranch', ['vendor_uuid' => $this->vendor_uuid, 'category_id' => $category[0]['category_id'], 'table_id' => request()->table_id,]));
+        return redirect(route('productCategoryBranch', ['vendor_uuid' => $this->vendor_uuid, 'category_id' => $category[0]['category_id'], 'table_id' => request()->table_id, 'language' => session()->get('lang')]));
 
         return view('branch', compact(['category', 'vendor_info', 'social', 'vendor_uuid', 'pixel']));
     }
@@ -66,8 +69,12 @@ class MenuBranchController extends vendorAuthController
         return response()->json([$cat]);
     }
 
-    public function productCategoryBranch($vendor_uuid, $category_id, $table_id)
+    public function productCategoryBranch(Request $request, $vendor_uuid, $language, $category_id, $table_id)
     {
+        $status = in_array($language, ['ar', 'en']);
+        $lang = $status ? $language : 'ar';
+        App::setLocale($lang);
+        $request->session()->put('lang', $lang);
         $page_id = request('page_id') ?? 1;
         $vendor_uuid = $this->vendor_uuid;
         $url = $this->ApiUrl . "menu/Branch?table_id=" . $table_id . "&category_id=" . $category_id . '&page=' . $page_id;
@@ -92,6 +99,12 @@ class MenuBranchController extends vendorAuthController
         $pixel = $this->pixel;
         $categories = $this->categoriesBranch;
         $table_number = $this->table_number['tableNumber'];
+
+
+
+
+
+
         return view('frontend.pages.home', compact(['products', 'vendor_uuid', 'categories', 'table_number', 'category_id', 'social', 'vendor_info', 'pixel', 'table_id']));
     }
     public function product()
@@ -127,5 +140,4 @@ class MenuBranchController extends vendorAuthController
     {
         return view('frontend.pages.track_order');
     }
-
 }

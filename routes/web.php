@@ -18,9 +18,10 @@ use App\Http\Controllers\HomeController;
 Route::get('/pressOnCart', [HomeController::class, 'pressOnCart'])->name('pressOnCart');
 Route::get('/product_details', [HomeController::class, 'product_details'])->name('product_details');
 Route::group(['prefix' => '{vendor_uuid}', 'middleware' => ['apiCheckVendor']], function () {
-    Route::get('menu/{category_id}/{table_id}', [App\Http\Controllers\MenuBranchController::class, 'productCategoryBranch'])->name('productCategoryBranch');
-    Route::get('showproduct/{product_id}/{table_id}', [App\Http\Controllers\MenuBranchController::class, 'product'])->name('showproductBranch');
+    Route::get('branch/{table_id}', [App\Http\Controllers\MenuBranchController::class, 'branch'])->name('branch');
 
+    Route::get('{language}/menu/{category_id}/{table_id}', [App\Http\Controllers\MenuBranchController::class, 'productCategoryBranch'])->name('productCategoryBranch');
+    Route::get('showproduct/{product_id}/{table_id}', [App\Http\Controllers\MenuBranchController::class, 'product'])->name('showproductBranch');
     Route::post('changeQuantity', 'OrderBasketController@changeQuantity')->name('changeQuantity');
     Route::post('add-to-basket/{product_id}', [App\Http\Controllers\OrderBasketController::class, 'addToBasket'])->name('addToBasket');
     Route::post('submitOrder', 'OrderBasketController@submitOrder')->name('submitOrder');
