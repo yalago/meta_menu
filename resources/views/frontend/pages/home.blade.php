@@ -7,10 +7,10 @@ style="background-image: url({{ url($vendor_info['vendor_cover_img']) }})"
 @section('content')
 <div id="home-container">
     <div id="home-products-list" class="">
-        <div class="home-carousel-container position-fixed  w-100 p-2 bg-black">
+        <div class="home-carousel-container position-sticky  w-100 py-2 bg-black">
             <div id="products-categories-slider" class="owl-carousel owl-theme ">
                 @foreach ($categories as $item)
-                <div class="item center-content-vertically border border-1 p-3 custom-rounded-border text-light active-cat-pill"
+                <div class="item center-content-vertically border border-1 px-3 py-2 custom-rounded-border text-light active-cat-pill"
                     data-target="cat-{{ $item['category_id'] }}">
                     <img src="{{ asset('assets/images/meal-slice.png') }}" class="me-2" alt="">
                     {{ $item['category_name'] }}
@@ -41,8 +41,8 @@ style="background-image: url({{ url($vendor_info['vendor_cover_img']) }})"
                     </div>
                     <div class=" center-content-vertically actions ms-auto">
                         <a href="{{ route('showproductBranch', ['vendor_uuid' => $vendor_uuid, $product['product_id'], 'table_id' => $table_id]) }}"
-                            class="rounded-circle bg-teritary mx-1 center-content add-to-cart-in-list">
-                            <img src="{{ asset('assets/images/plus-rounded.png') }}" alt="">
+                            class="mx-1 center-content add-to-cart-in-list">
+                            <img src="{{ asset('assets/images/plus-rounded.png') }}" class="w-100" alt="">
                         </a>
                         @if ($product['video'] != null)
                         <a class=" rounded-circle bg-gray mx-1 center-content" onclick="togglePlayVideo(this)">
