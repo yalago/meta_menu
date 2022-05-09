@@ -68,10 +68,15 @@ style="background-image: url({{ url($vendor_info['vendor_cover_img']) }})"
 </div>
 @endsection
 @section('scripts')
-<script src="{{ asset('assets/lib/OwlCarousel2/dist/owl.carousel.min.js') }}"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="{{ asset('assets/lib/OwlCarousel2/dist/owl.carousel.min.js') }}">
+<script src = "assets/lib/OwlCarousel2/dist/owl.carousel.min.js" >
+<script src="{{ asset('vendor/zoom-master/jquery.zoom.min.js') }}" type="text/javascript"></script>
+
+
+
 @endsection
 @section('styles')
+
 <link href="{{ asset('assets/lib/OwlCarousel2/dist/assets/owl.carousel.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/lib/OwlCarousel2/dist/assets/owl.theme.default.min.css') }}" rel="stylesheet">
 @endsection
@@ -100,7 +105,7 @@ style="background-image: url({{ url($vendor_info['vendor_cover_img']) }})"
     }
     },
     })
-    
+
     $('.add-to-cart-in-list').on('click',function () {
         let productId=$(this).attr('data-product-id');
             $.ajaxSetup({
@@ -138,14 +143,15 @@ style="background-image: url({{ url($vendor_info['vendor_cover_img']) }})"
             // },
             // buttonsStyling: false
             // });
-            
-         
-            
+
+
+
             }
             },
             });
     })
-    
+
     })
 </script>
+
 @endsection

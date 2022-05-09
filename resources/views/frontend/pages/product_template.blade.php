@@ -1,3 +1,4 @@
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="col-6">
     <div>
         <h5>{{ $loaded_product['data']['product_info']['product_name'] }}</h5>
@@ -14,8 +15,10 @@
     {{ $loaded_product['data']['product_info']['product_desc'] }}
 </p>
 
-<input type="hidden" name="prodprice" value="{{ $loaded_product['data']['product_info']['price'] }}" id="product_price">
-<input type="hidden" name="prodprice" value="{{ $loaded_product['data']['product_info']['product_id'] }}" id="product_id">
+<input type="hidden" name="prodprice" value="{{ $loaded_product['data']['product_info']['price'] }}"
+    id="product_price">
+<input type="hidden" name="prodprice" value="{{ $loaded_product['data']['product_info']['product_id'] }}"
+    id="product_id">
 <div class="">
 
     <div class="">
@@ -23,40 +26,42 @@
     </div>
     <div class="addons-container">
         @foreach ($loaded_product['data']['product_info']['addons']['addon_category'] as $index => $item)
-        <div class="addon-category mb-4">
-            <div>
-                <h5>{{ $item['cat_name'] }}</h5>
-            </div>
-            @foreach ($item['addons'] as $addons)
-            <div class="row">
-                @if ($item['cat_choose_type'] == 'single')
-                <div class="col-1">
-                    <div class="iradio">
+            <div class="addon-category mb-4">
+                <div>
+                    <h5>{{ $item['cat_name'] }}</h5>
+                </div>
+                @foreach ($item['addons'] as $addons)
+                    <div class="row">
+                        @if ($item['cat_choose_type'] == 'single')
+                            <div class="col-1">
+                                <div class="iradio">
 
-                        <input type="checkbox" name="addon_radio_name_{{ $index }}"
-                            data-addon-id="{{ $addons['addon_id'] }}" data-addon-price="{{ $addons['addon_price'] }}"
-                            class="form-check-input checkbox dark addonHandler addonItem" />
-                    </div>
-                </div>
-                @else
-                <div class="col-1">
-                    <div class="icheckbox">
+                                    <input type="checkbox" name="addon_radio_name_{{ $index }}"
+                                        data-addon-id="{{ $addons['addon_id'] }}"
+                                        data-addon-price="{{ $addons['addon_price'] }}"
+                                        class="form-check-input checkbox dark addonHandler addonItem" />
+                                </div>
+                            </div>
+                        @else
+                            <div class="col-1">
+                                <div class="icheckbox">
 
-                        <input type="checkbox" name="addon_radio_name_{{ $index }}"
-                            data-addon-id="{{ $addons['addon_id'] }}" data-addon-price="{{ $addons['addon_price'] }}"
-                            class="form-check-input checkbox dark addonHandler addonItem" />
+                                    <input type="checkbox" name="addon_radio_name_{{ $index }}"
+                                        data-addon-id="{{ $addons['addon_id'] }}"
+                                        data-addon-price="{{ $addons['addon_price'] }}"
+                                        class="form-check-input checkbox dark addonHandler addonItem" />
+                                </div>
+                            </div>
+                        @endif
+                        <div class="col-8 ps-0">
+                            {{ $addons['addon_name'] }}
+                        </div>
+                        <div class="col-3 text-end">
+                            {{ $addons['addon_price'] }} ريال
+                        </div>
                     </div>
-                </div>
-                @endif
-                <div class="col-8 ps-0">
-                    {{ $addons['addon_name'] }}
-                </div>
-                <div class="col-3 text-end">
-                    {{ $addons['addon_price'] }} ريال
-                </div>
+                @endforeach
             </div>
-            @endforeach
-        </div>
         @endforeach
     </div>
 </div>
@@ -135,3 +140,127 @@
         </div>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+<script>
+    $(document).ready(function() {
+
+        $('#basketBtnArea').removeClass('d-none');
+
+
+        $('input.addonItem').on('ifChecked', function(event) {
+            var addon_id = $(this).data('addon-id');
+            var addon_price = $(this).data('addon-price');
+            var totalSubPrice = $('#product_price').val();
+            priceAfterAddon = parseFloat(totalSubPrice) + parseFloat(addon_price);
+
+            $('#product_price').val(priceAfterAddon);
+            handleQuantityPrice();
+
+            $('#addonsForm').append('<input type="hidden" class="addon_input" id="addon_' + addon_id +
+                '" value="' + addon_id + '" name="addon[]" />');
+        });
+
+        // handle total price item with quantity
+        function handleQuantityPrice() {
+            var quantity = parseInt($('.counter-number').html());
+            var itemPrice = $('#product_price').val();
+            subPriceBasket = parseFloat(quantity) * parseFloat(itemPrice);
+            $('#productBasketTotalPrice span').html(subPriceBasket);
+        }
+
+        $('input.addonItem').on('ifUnchecked', function(event) {
+            var addon_id = $(this).data('addon-id');
+            var addon_price = $(this).data('addon-price');
+            var totalSubPrice = $('#product_price').val();
+            priceAfterAddon = parseFloat(totalSubPrice) - parseFloat(addon_price);
+            $('#product_price').val(priceAfterAddon);
+            handleQuantityPrice();
+            $('#addon_' + addon_id).remove(); // input
+        });
+
+        // counter
+        $('.counter .btn-counter:last-of-type').on('click', function(e) {
+            counter(this, 'minus');
+        });
+
+        $('.counter .btn-counter:first-of-type').on('click', function(e) {
+            counter(this, 'plus');
+        });
+
+
+        function counter(btn, status) {
+            var countEle = $(btn).parent().find('.counter-number');
+            var count = parseInt(countEle.html());
+            if (count > 1 && status == 'minus') {
+                count--;
+                countEle.html(count);
+
+                var currenctPrice = parseFloat($('#productBasketTotalPrice span').html());
+                var product_price = parseFloat($('#product_price').val());
+                var finalPrice = currenctPrice - product_price;
+                $('#productBasketTotalPrice span').html(finalPrice);
+            }
+
+            if (status == 'plus') {
+                count++;
+                countEle.html(count);
+                var currenctPrice = parseFloat($('#productBasketTotalPrice span').html());
+                var product_price = parseFloat($('#product_price').val());
+                var finalPrice = currenctPrice + product_price;
+                $('#productBasketTotalPrice span').html(finalPrice);
+            }
+        }
+
+        var product_price = parseFloat($('#product_price').val());
+        $('#productBasketTotalPrice span').html(product_price);
+
+
+        // add to cart
+        $(document).on('click', '#addToMyCart', function() {
+            let quantity = $('.counter-number').html();
+            // get all the inputs into an array.
+            var $inputs = $('#addonsForm :input[name="addon[]"]');
+
+            // not sure if you wanted this, but I thought I'd add it.
+            // get an associative array of just the values.
+            var addonsValues = [];
+            $inputs.each(function(key) {
+                addonsValues.push($(this).val());
+            });
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            // do ajax
+            $.ajax({
+                url: "{{ route('addToBasket', ['vendor_uuid' => $vendor_uuid, 'product_id' => $loaded_product['data']['product_info']['product_id']]) }}",
+                type: "POST",
+                data: {
+                    quantity: quantity,
+                    table_id: "{{ request()->table_id }}",
+                    addons: addonsValues,
+                },
+                beforeSend: function() {
+                    $('.loader-ready').addClass('loader');
+                    $('.loader-ready').removeClass('d-none');
+                },
+                success: function(response) {
+                    $('.loader-ready').removeClass('loader');
+                    $('.loader-ready').addClass('d-none');
+                    console.log(response.status.HTTP_code);
+                    if (response.status.HTTP_code == 200) {
+                        $('#home-products-list').slideToggle();
+                        $('.add-to-cart-pressed').hide();
+
+                    }
+                },
+            });
+
+            return false;
+        }); // add to my cart
+    });
+</script>
