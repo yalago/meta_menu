@@ -26,7 +26,7 @@
         <div class="col-6 mb-2">
             الاجمالى
         </div>
-        <div class="col-6 text-end">23 ريال</div>
+        <div class="col-6 text-end">{{$products['data']['products_price']}}</div>
         <div class="col-6 mb-2">الضرائب</div>
         <div class="col-6 text-end">23 ريال</div>
         <hr class="my-2">
@@ -38,23 +38,27 @@
         </div>
     </div>
     <h4 class="mb-3">تفاصيل الطلب</h4>
+    @foreach ($products['data']['products'] as $item)
+
+
     <div>
         <div class="row mb-3">
             <div class="col-3">
-                <img src="{{ asset('assets/images/burger.png') }}" class="rounded-circle" alt="">
+                <img src="{{$item['product_image']}}" class="rounded-circle" alt="">
             </div>
             <div class="col-6">
                 <p>
-                    خبز التارتين المحشو بلحم
+                    {{$item['product_name']}}
                 </p>
                 <span>
                     <span class="text-teritary me-2">الكمية</span>
-                    <span>1</span>
+                    <span>{{$item['quantity']}}</span>
                 </span>
             </div>
-            <div class="col-3 text-end">23 ريال</div>
+            <div class="col-3 text-end"> {{$item['one_product_price']}}</div>
         </div>
     </div>
+     @endforeach
 </div>
 <button id="confrim-order" class="btn bg-teritary text-light position-absolute">
     تأكيد الطلب

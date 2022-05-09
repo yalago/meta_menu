@@ -121,7 +121,8 @@ class MenuBranchController extends vendorAuthController
     }
     public function checkout()
     {
-        return view('frontend.pages.checkout');
+        $vendor_uuid = request()->vendor_uuid;
+        return view('frontend.pages.checkout', compact('vendor_uuid'));
     }
     public function congratulations()
     {
