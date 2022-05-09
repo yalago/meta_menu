@@ -146,6 +146,8 @@ class MenuBranchController extends vendorAuthController
         ]);
         $product = ($response->getBody());
         $loaded_product = json_decode($product, true);
-        return view('frontend.pages.product_template', compact(['loaded_product']));
+        $vendor_uuid = request()->vendor_uuid;
+
+        return view('frontend.pages.product_template', compact(['loaded_product', 'vendor_uuid']));
     }
 }
